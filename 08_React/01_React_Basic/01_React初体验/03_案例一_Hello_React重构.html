@@ -1,0 +1,168 @@
+<!-- 
+  Hello React示例-组件化开发
+
+  整个逻辑其实可以看做一个整体，那么我们就可以将其封装成一个组件：
+    我们说拖root.render参数是一个HTML元素或者一个组件
+    所以我们可以先将之前的业务逻辑封装到一个组件中，然后传入到React.render函数中的第一个参数
+
+  在React中，如何封装一个组件呢？这里我们暂时使用类的方式封装组件：
+    1.定义一个类（类名大写，组件的名称必须是大写的，小写的会被认为是HTML元素），继承自React.Component
+    2.实现当前组件的render函数
+      render当中返回的jsx内容，就是之后React会帮助我们渲染的内容
+ -->
+
+<!-- 
+  组件化-数据依赖
+
+  组件化问题一：数据在哪里定义？
+
+  在组件中的数据，可以分成两类：
+    参与界面更新的数据：当数据变化时，需要更新组件渲染的内容
+    不参与界面更新的数据：当数据变化时，不需要更新组件渲染的内容
+
+  参与界面更新的数据，我们也可以称之为参与数据流，这个数据是定义在当前对象的state中
+    我们可以通过在构造函数中this.state = {key: value}
+    当我们的数据发生变化时，我们可以调用this.setState来更新数据，并且通知React进行update操作
+    在进行update操作时，就会重新调用render函数，并且使用最新的数据，来渲染界面
+ -->
+
+<!-- 
+  组件化-事件绑定
+
+  组件化问题二：事件绑定中的this
+    在类中直接定义一个函数，并且将这个函数绑定到元素的onClick事件上，当前这个函数的this指向的是谁呢？
+
+  默认情况下是undefined
+    因为在正常的DOM操作中，监听点击，监听函数中的this其实是节点对象（比如button对象）
+    React并不是直接渲染成真实的DOM，我们所编写的button只是一个语法糖，它的本质是React的Element对象
+    那么在这里发生监听的时候，react在执行函数时并没有绑定this，默认情况下就是undefined
+
+  我们在绑定的函数中，可能想要使用当前对象，比如执行this.setState函数，就必须拿到当前对象的this
+    我们就需要在传入函数时，给这个函数直接绑定this
+    类似于下面的写法：<button onClick={this.btnClick.bind(this)}>改变文本</button>
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 将需要依赖的库添加到本地，从本地引入 -->
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div id="app"></div>
+
+  <!-- 使用组件重构代码 -->
+  <script type="text/babel">
+
+    //  定义App组件（React的组件分类：类组件、函数式组件）
+    //  定义类组件：继承自React.Component
+    class Root extends React.Component {
+      //  重写构造器
+      constructor(props) {
+        super(props)
+        //  组件数据
+        this.state = {
+          info: "Hello World"
+        }
+
+        //  提前绑定好this
+        //  将原本定义在App显示原型上的btnClick1绑定this，然后赋值给当前组件实例上
+        // this.btnClick = this.btnClick.bind(this)
+      }
+      //  组件方法
+      btnClick() {
+        /*
+          思考几个问题：
+          1.原生DOM事件，btnClick函数内部的this是什么：响应该事件的DOM对象
+          2.render函数中的this是什么：App组件实例
+          3.btnClick函数定义在哪里：App的显式原型，因此render中调用this.btnClick，根据原型链可以找到此函数
+          4.btnClick是由谁触发的：不是通过App组件实例触发的，因此btnClick内部的this并非App组件实例
+          5.默认情况下，btnClick函数this为什么为undefined：btnClick独立调用，为window，而babel开启严格模式，因此为undefined
+         */
+        console.log("btnClick:", this)
+
+        let { info } = this.state
+        if (info === "Hello World") {
+          info = "Hello React"
+        } else {
+          info = "Hello World"
+        }
+
+        //  setState完成的操作：
+        //  1.修改state中的值
+        //  2.重新渲染（执行render函数）
+        this.setState({ info })
+      }
+
+      //  渲染内容
+      render() {
+        //  render函数中的this，指向该组件实例
+        console.log("render:", this)
+
+        return (
+          <div>
+            <h1>{this.state.info}</h1>
+            {/* 此处要确保：btnClick调用时，内部的this指向当前组件实例 */}
+            {/* 本示例中的两种处理this的方式，仅做演示，并不是最优雅的方式 */}
+            <button onClick={this.btnClick.bind(this)}>改变文本1</button>
+            <button onClick={() => this.btnClick()}>改变文本2</button>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<Root />)
+
+
+    //  定义函数式组件（仅做简单练习，后续详细学习）
+    //  函数式组件，首字母必须大写
+    function App() {
+      //  React16.7新推出的hooks
+      //  第一个参数：state
+      //  第二个参数：修改state的方法
+      const [message, setMessage] = React.useState("Hello World")
+
+      const btnClick=() => {
+        setMessage(message === "Hello World" ? "Hello React" : "Hello World")
+      }
+
+      //  返回值作为组件的结构，相当于类组件的render函数
+      return (
+        <div>
+          {/* 函数式组件的优势：无需像类组件一样，考虑this的问题 */}
+          {/* 通过作用域，可以访问到需要访问的属性、方法 */}
+          <h1>{message}</h1>
+          <button onClick={btnClick}>改变文本</button>
+        </div>
+      )
+    }
+
+    const app = ReactDOM.createRoot(document.getElementById("app"))
+    app.render(<App />)
+
+    //  this指向问题
+    //  默认调用：this指向window
+    //  ES6的class中定义的方法，内部默认开启了严格模式 => 默认调用：this指向undefined
+    //  babel默认开启严格模式 => 默认调用：this指向undefined
+    
+    // const app = new App()
+    // const foo = app.btnClick
+    // foo()
+
+    // function bar() {
+    //   console.log("bar:", this)
+    // }
+    // bar()
+  </script>
+</body>
+
+</html>

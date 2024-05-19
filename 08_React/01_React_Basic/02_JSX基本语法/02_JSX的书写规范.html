@@ -1,0 +1,72 @@
+<!-- 
+  为什么React选择了JSX
+    
+  React认为渲染逻辑本质上与其他UI逻辑存在内在耦合
+    比如UI需要绑定事件（button、a等等）
+    比如UI需要展示数据状态（model => view）
+    比如在某些状态发生改变时，有需要改变UI（view => model）
+
+  它们之间是密不可分的，所以React没有将标记分离到不同的文件中，而是将他们组合到了一起，这个地方就是组件（Component）
+
+  在这里，我们只需要知道，JSX其实是嵌入到JavaScript中的一种结构语法
+
+  JSX的书写规范：
+    JSX的顶层只能有一个根元素，所以我们很多时候会在外层包裹一个div元素（或者使用Fragment）
+    为了方便阅读，我们通常在JSX的外层包裹一个小括号，这样可以方便阅读，并且可以换行书写JSX
+    JSX中的标签可以是单标签，也可以是双标签，只要保证标签闭合就可以
+      如果是单标签，必须以 />结尾
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          message: "Hello World"
+        }
+      }
+
+      render() {
+        const { message } = this.state
+
+        //  JSX书写规范：
+        //  1.JSX结构中只能有一个根元素
+        //  2.JSX结构通常会包裹一个()，将整个JSX当做一个整体，实现换行
+        //  3.JSX中的标签，可以是单标签，也可以是双标签，如果是单标签，必须使用 />自闭合
+
+        return (
+          <div>
+            <h2>{message}</h2>
+            <div>
+              <span>嘿嘿</span>
+            </div>
+            {/* 纯HTML中，可以写成<hr>，但是JSX是不允许的 */}
+            {/* 如果是单标签，必须使用 />自闭合 */}
+            <hr />
+            <p>哈哈哈</p>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

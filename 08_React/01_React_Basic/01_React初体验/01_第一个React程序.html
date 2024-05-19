@@ -1,0 +1,145 @@
+<!-- 
+  React的介绍（技术特点）
+
+  React是什么？
+    React：用于构建用户界面的JavaScript库
+    React的官方文档：
+      https://zh-hans.reactjs.org/（最新）
+      https://zh-hans.legacy.reactjs.org/（已过时）
+
+  React的特点：
+    声明式
+    组件化
+    跨平台
+ -->
+
+<!-- 
+  React的特点-声明式编程
+
+  声明式编程：
+    声明式编程式是目前整个大前端开发的模式：Vue、React、Flutter、SwiftUI、Jetpack Compose
+    它允许我们只需要维护自己的状态，当状态改变时，React可以根据最新的状态去渲染我们的UI界面
+
+  UI = f(state)
+    UI：The layout on the screen
+    f：Your build methods
+    state：The application state
+ -->
+
+<!-- 
+  React特点-组件化开发
+
+  组件化开发：
+    组件化开发页面是目前前端的流行趋势，我们会将复杂的界面拆成成一个个小的组件
+    如何合理的进行组件的划分和设计也是后面会讲到的一个重点
+ -->
+
+<!-- 
+  React的特点-多平台适配
+
+  多平台适配：
+    2013年，React：主要是开发Web页面
+    2015年，ReactNative：用于开发移动端跨平台
+    2017年，ReactVR：用于开发虚拟现实Web应用程序
+ -->
+
+<!-- 
+  React的开发依赖
+
+  开发React必须依赖三个库：
+    react：包含react所必须的核心代码
+    react-dom：react渲染在不同平台所需要的核心代码
+    babel：将jsx转换成React代码（js代码）的工具
+
+  注意：React0.14版本之前没有react-dom这个概念，所有功能都包含在react里
+
+  为什么要进行拆分呢？原因就是react-native
+    react包中包含了react web和react-native所共同拥有的核心代码
+    react-dom针对web和native所完成的事情不同
+      web端：reac-dom会将jsx最终渲染成真实的DOM，显示在浏览器中
+      native端：react-dom会将jsx最终渲染成原生的控件（比如：Android中的Button、iOS中的UIButton）
+ -->
+
+<!-- 
+  Babel和React的关系
+
+  babel是什么呢
+    Babel，又名Babel.js
+    是目前前端使用非常广泛的编译器、转换器
+    比如当下很多浏览器并不支持ES6语法，但是我们开发时希望使用它
+    那么编写源码时我们就可以使用ES6来编写，之后通过Babel工具，将ES6转成大多数浏览器都支持的ES5的语法
+
+  React和Babel的关系：
+    默认情况下开发React其实可以不使用babel
+    但是前提是我们自己使用React.createElement来编写源代码，它编写的代码非常繁琐，可读性差
+    那么我们就可以直接编写jsx（JavaScript XML）的语法，并且让babel帮助我们转换成React.createElement
+ -->
+
+<!-- 
+  React的依赖引入
+
+  那么，如何添加这三个依赖：
+    方式一：直接CDN引入
+    方式二：下载后，添加本地依赖
+    方式三：通过npm管理
+
+  暂时我们直接通过CDN引入：
+    这里有一个crossorigin的属性，这个属性是为了拿到跨域脚本的错误信息
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+ -->
+
+<!-- 
+  Hello World示例
+
+  第一步：在界面上通过React显示一个Hello World
+    注意：这里我们编写React的script代码中，必须添加type="type/babel"，作用是可以让babel解析jsx语法
+
+  React.createRoot函数：用于创建React根，之后渲染的内容会包含在这个根中
+    参数：将渲染的内容，挂载到哪一个HTML元素上（id为root的div）
+
+  root.render函数：
+    参数：要渲染的根组件（可以是根组件，也可以是根组件的结构）
+
+  我们可以通过{}语法来引入外部的变量或者表达式
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 添加React依赖 -->
+  <!-- 1.react -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <!-- 2.react-dom -->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- 3.babel -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+  <!-- 实际开发中，一个应用只有一个div容器，此处仅为演示 -->
+  <div id="root"></div>
+  <div id="app"></div>
+
+  <!-- 编写React代码（jsx语法） -->
+  <!-- babel：jsx语法 => 普通的JavaScript代码 -->
+  <script type="text/babel">
+    //  React18之前的写法：
+    //  React18将不再支持ReactDOM.render的写法
+    //  ReactDOM.render(<h1>Hello World</h1>, document.getElementById("root"))
+
+    //  React18的写法：
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<h1>Hello World</h1>)
+
+    const app = ReactDOM.createRoot(document.getElementById("app"))
+    app.render(<h1>Hello React</h1>)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+  <!-- 
+    Hello React案例说明
+      
+    为了演练React，我们可以提出一个小的需求
+      在界面显示一行文本：Hello World
+      点击下方的一个按钮，点击后，文本改变为Hello React
+   -->
+
+  <div id="root"></div>
+
+  <!-- 以下代码存在的问题：逻辑分散 -->
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+
+    //  1.将文本定义成变量
+    let message = "Hello World"
+
+    //  2.监听按钮的点击
+    const btnClick = () => {
+      //  2.1 修改数据
+      if (message === "Hello World") {
+        message = "Hello React"
+      } else {
+        message = "Hello World"
+      }
+      //  2.2 重新渲染界面
+      rootRender()
+    }
+
+    //  首次渲染
+    rootRender()
+
+    //  封装渲染函数
+    function rootRender() {
+      root.render((
+        <div>
+          <h1>{message}</h1>
+          {/* JSX中的事件，要写成onXxx的形式 */}
+          {/* onClick的值需要是一个函数 */}
+          <button onClick={btnClick}>改变文本</button>
+        </div>
+      ))
+    }
+  </script>
+</body>
+
+</html>

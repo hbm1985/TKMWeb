@@ -1,0 +1,116 @@
+<!-- 
+  JSX的使用
+
+  JSX绑定属性
+    比如元素都会有title属性
+    比如img元素会有src属性
+    比如a元素会有href属性
+    比如元素可能需要绑定class
+    比如原生使用内联样式style
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .aaa {
+      background-color: red;
+    }
+
+    .bbb {
+      color: aqua;
+    }
+
+    .active {
+      background-color: blueviolet;
+      color: yellowgreen;
+      font-weight: 700;
+    }
+  </style>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          message: "Hello World",
+          title: "哈哈哈",
+          imgURL: "https://img.suv666.com/mcn/editor/img/20201214154924_Sun0lfLG-1080x_webp",
+          imgName: "r32",
+          href: "https://www.bilibili.com",
+          isActive: true,
+          styleObj: {
+            padding: "10px",
+            backgroundColor: "purple",
+            color: "cyan",
+            fontWeight: "700"
+          }
+        }
+      }
+
+      render() {
+        const { title, imgURL, imgName, href, isActive, styleObj } = this.state
+        //  class绑定的写法一：字符串拼接
+        const className = `aaa bbb ${isActive ? "active" : ""}`
+        //  class绑定的写法二：将所有class添加到数组，再通过join(" ")拼接成字符串
+        const classList = ["aaa", "bbb"]
+        if (isActive) {
+          classList.push("active")
+        }
+        //  class绑定的写法三：第三方库classnames（后续脚手架项目时再讲）
+        //  React中绑定class与style，只有这些种方式（区别Vue中绑定class与style的多种方式）
+
+        return (
+          <div>
+            {/* 1.基本绑定 */}
+            <h2 title={title}>我是h2元素</h2>
+            <img src={imgURL} alt={imgName} width="200" />
+            <a href={href}>放松一下</a>
+
+            {/* 2.绑定class属性 */}
+            {/* 绑定class属性，最好使用className（class不报错，但是会有警告） */}
+            {/* Invalid DOM property `class`. Did you mean `className */}
+            {/* <h2 class="aaa bbb">哈哈哈</h2> */}
+            <h2 className="aaa bbb">哈哈哈</h2>
+            <h2 className={`aaa bbb ${isActive ? "active" : ""}`}>哈哈哈</h2>
+            <h2 className={className}>哈哈哈</h2>
+            <h2 className={classList.join(" ")}>哈哈哈</h2>
+
+            {/* 3.绑定style属性 */}
+            {/* JSX的style必须是一个对象，且key使用小驼峰命名 */}
+            <h2 style={{
+              padding: "10px",
+              backgroundColor: "red",
+              color: "yellow",
+              fontWeight: "700"
+            }}>
+              呵呵呵
+            </h2>
+            <h2 style={styleObj}>呵呵呵</h2>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

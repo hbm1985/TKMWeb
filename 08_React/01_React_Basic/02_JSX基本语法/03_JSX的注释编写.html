@@ -1,0 +1,61 @@
+<!-- 
+  JSX的使用
+
+  JSX的注释
+
+  JSX嵌入变量作为子元素
+    情况一：当变量是number、string、array类型时，可以直接显示
+    情况二：当变量是null、undefined、boolean类型时，内容为空
+      如果希望可以显示null、undefined、boolean，那么需要转换成字符串
+      转换的方式有很多，比如toString方法、和空字符串拼接、String(变量)等方式
+    情况三：Object对象类型不能作为子元素（not valid as a React child）
+
+  JSX嵌入表达式
+    运算表达式
+    三元运算符
+    执行一个函数
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          message: "Hello World"
+        }
+      }
+
+      render() {
+        //  1.state解构，获取到message
+        const { message } = this.state
+        return (
+          <div>
+            {/* JSX的注释写法 */}
+            {/* 在JSX中，使用state */}
+            <h2>{message}</h2>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          counter: 100,
+          message: "Hello World",
+          names: ["abc", "cba", "nba"],
+
+          aaa: undefined,
+          bbb: null,
+          ccc: true,
+
+          info: {
+            name: "Bread",
+            age: 24
+          },
+
+          firstName: "Huang",
+          lastName: "Bread",
+
+          movies: [
+            { id: "001", name: "《星际穿越》" },
+            { id: "002", name: "《流浪地球》" },
+            { id: "003", name: "《独行月球》" },
+            { id: "004", name: "《大话西游》" },
+            { id: "005", name: "《火星救援》" }
+          ]
+        }
+      }
+
+      renderMovies(movies) {
+        if (!movies.length) {
+          return <h2>暂无结果</h2>
+        }
+
+        return (
+          <div>
+            <h2>电影列表</h2>
+            <ul>
+              {
+                movies.map(movie => {
+                  return <li key={movie.id}>{movie.name}</li>
+                })
+              }
+            </ul>
+          </div>
+        )
+      }
+
+      render() {
+        const { counter, message, names } = this.state
+        const { aaa, bbb, ccc } = this.state
+        const { info } = this.state
+        const { firstName, lastName } = this.state
+        const { movies } = this.state
+
+        //  Vue中有计算属性，而React是没有的（all in JS）
+        //  计算属性的初衷：简化模板代码、优化重新渲染
+        const sum = 10 + 20
+        const fullName = firstName + "-" + lastName
+        const ageText = info.age < 18 ? "未成年人" : "成年人"
+
+        return (
+          <div>
+            {/* 1.number、string、arrray类型，可以直接显示 */}
+            <h2>{counter}</h2>
+            <h2>{message}</h2>
+            <h2>{names}</h2>
+            <hr />
+
+            {/* 2.undefined、null、boolean，默认显示空（空标签） */}
+            <h2>{aaa}</h2>
+            <h2>{bbb}</h2>
+            <h2>{ccc}</h2>
+            <hr />
+
+            {/* 如果想显示undefined、null、boolean，可以通过以下方法 */}
+            <h2>{String(aaa)}</h2>
+            <h2>{bbb + ""}</h2>
+            <h2>{ccc.toString()}</h2>
+            <hr />
+
+            {/* 3.object类型不能作为JSX的子元素（初期很常见的一个错误） */}
+            {/* Objects are not valid as a React child */}
+            {/* <h2>{info}</h2> */}
+            <h2>name: {info.name}</h2>
+            <h2>age: {info.age}</h2>
+            <hr />
+
+            {/* 4.插入表达式（参考Mustache表达式，注意区分表达式与语句的区别） */}
+            <h2>10 + 20 = {10 + 20}</h2>
+            <h2>{firstName + "-" + lastName}</h2>
+            <h2>{info.age < 18 ? "未成年人" : "成年人"}</h2>
+            <hr />
+
+            {/* 5.使用JS代码，实现Vue中的计算属性类似的效果 */}
+            <h2>10 + 20 = {sum}</h2>
+            <h2>{fullName}</h2>
+            <h2>{ageText}</h2>
+
+            {/* 6.调用方法获取结果（需要注意结果不能是对象） */}
+            {this.renderMovies(movies)}
+            {this.renderMovies([])}
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

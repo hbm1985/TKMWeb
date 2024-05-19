@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+
+        this.state = {
+          movies: [
+            { id: "001", name: "《星际穿越》" },
+            { id: "002", name: "《流浪地球》" },
+            { id: "003", name: "《独行月球》" },
+            { id: "004", name: "《大话西游》" },
+            { id: "005", name: "《火星救援》" }
+          ]
+        }
+      }
+
+      render() {
+        const { movies } = this.state
+
+        //  可以先将数据源加工好，再传给jsx
+        //  也可以在jsx中直接加工数据源
+        const liEls = movies.map(movie => {
+          return <li key={movie.id}>{movie.name}</li>
+        })
+
+        return (
+          <div>
+            <div>
+              <h1>电影列表</h1>
+              <ul>
+                {/* jsx表达式中，允许编写数组，但不允许编写对象 */}
+                {liEls}
+              </ul>
+            </div>
+            <div>
+              <h1>电影列表</h1>
+              <ul>
+                {
+                  movies.map(movie => {
+                    {/* key：列表项的attribute，必须唯一，保证diff算法效率 */ }
+                    {/* 区别于Vue，React不指定key，直接报错 */ }
+                    return <li key={movie.id}>{movie.name}</li>
+                  })
+                }
+              </ul>
+            </div>
+          </div >
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

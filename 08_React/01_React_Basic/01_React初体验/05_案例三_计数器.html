@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class Counter extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = { count: 100 }
+      }
+
+      increment() {
+        const { count } = this.state
+        this.setState({
+          count: count + 1
+        })
+      }
+
+      decrement() {
+        const { count } = this.state
+        this.setState({
+          count: count - 1
+        })
+      }
+
+      render() {
+        const { count } = this.state
+        return (
+          <div>
+            <h1>当前计数：{count}</h1>
+            <button onClick={() => this.increment()}>+1</button>
+            <button onClick={() => this.decrement()}>-1</button>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<Counter />)
+
+  </script>
+</body>
+
+</html>

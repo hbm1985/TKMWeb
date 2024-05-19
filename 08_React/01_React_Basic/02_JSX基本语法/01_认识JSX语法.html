@@ -1,0 +1,49 @@
+<!-- 
+  认识JSX
+
+  JSX是什么？
+    JSX是一种JavaScript的语法扩展（extension），也在很多地方称之为JavaScript XML，因为看起来就是一段XML语法
+    它用于描述我们的UI界面，并且其完全可以和JavaScript融合在一起使用
+    它不同于Vue中的模板语法，不需要专门学习模板语法中的一些指令（比如v-for、v-if、v-else、v-bind）
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          message: "Hello World"
+        }
+      }
+
+      render() {
+        const { message } = this.state
+        return (
+          <div>
+            <h2>{message}</h2>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>
