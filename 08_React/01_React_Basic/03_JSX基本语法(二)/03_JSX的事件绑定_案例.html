@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          movies: [
+            { id: "001", name: "《星际穿越》" },
+            { id: "002", name: "《流浪地球》" },
+            { id: "003", name: "《独行月球》" },
+            { id: "004", name: "《大话西游》" },
+            { id: "005", name: "《火星救援》" }
+          ],
+          currentIndex: -1
+        }
+      }
+
+      onItemClick(index) {
+        const { currentIndex } = this.state
+        if (currentIndex !== index) {
+          this.setState({
+            currentIndex: index
+          })
+        }
+      }
+
+      render() {
+        const { movies, currentIndex } = this.state
+        return (
+          <div>
+            <ul>
+              {
+                movies.map((movie, index) => {
+                  return (
+                    <li
+                      className={index === currentIndex ? "active" : ""}
+                      key={movie.id}
+                      onClick={() => this.onItemClick(index)}
+                    >
+                      {movie.name}
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>
