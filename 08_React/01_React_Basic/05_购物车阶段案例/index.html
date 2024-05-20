@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+    }
+
+    th,
+    td {
+      padding: 10px 16px;
+    }
+
+    span.count {
+      padding: 0 5px;
+    }
+  </style>
+  <!-- 引入react依赖 -->
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+  <!-- 引入数据 -->
+  <script src="./data.js"></script>
+  <!-- 引入工具类 -->
+  <script src="./format.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class ShopCart extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          books: []
+        }
+      }
+
+      //  引入生命周期
+      componentDidMount() {
+        this.setState({
+          books
+        })
+      }
+
+      decrementBook(index) {
+        //  React中修改state的原则：不要直接修改原数据（比如：this.state.books[index].count--）
+        //  较为标准的做法：
+        //  1.对原数据浅拷贝，得到新数据
+        //  2.在新数据中修改
+        //  3.setState，将新数据传入
+        const books = [...this.state.books]
+        const book = books[index]
+        book.count--
+        this.setState({ books })
+      }
+
+      incrementBook(index) {
+        const books = [...this.state.books]
+        const book = books[index]
+        book.count++
+        this.setState({ books })
+      }
+
+      changeCount(index, count) {
+        const books = [...this.state.books]
+        const book = books[index]
+        book.count += count
+        this.setState({ books })
+      }
+
+      removeBook(index) {
+        const books = [...this.state.books]
+        books.splice(index, 1)
+        this.setState({ books })
+      }
+
+      renderBooks(books) {
+        //  计算总价格
+        const totalPrice = books.reduce((prev, current) => {
+          return prev + (current.count * (+current.price))
+        }, 0)
+
+        return (
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>书籍名称</th>
+                  <th>出版日期</th>
+                  <th>价格</th>
+                  <th>购买数量</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  books.map((book, index) => {
+                    return (
+                      <tr key={book.id}>
+                        <td>{book.id}</td>
+                        <td>{book.name}</td>
+                        <td>{book.date}</td>
+                        <td>{formatPrice(book.price)}</td>
+                        <td>
+                          <button
+                            disabled={book.length <= 1}
+                            onClick={() => this.changeCount(index, -1)}
+                          >
+                            -
+                          </button>
+                          <span className="count">{book.count}</span>
+                          <button onClick={() => this.changeCount(index, 1)}>+</button>
+                        </td>
+                        <td>
+                          <button onClick={() => this.removeBook(index)}>移除</button>
+                        </td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+            <h2>总价格：{formatPrice(totalPrice)}</h2>
+          </div>
+        )
+      }
+
+      renderBookEmpty() {
+        return (
+          <div>
+            <h1>暂无数据</h1>
+          </div>
+        )
+      }
+
+      render() {
+        const { books } = this.state
+
+        //  条件渲染
+        //  将表格与空数据展示的渲染逻辑封装起来
+        let showElement = null
+        if (books.length) {
+          showElement = this.renderBooks(books)
+        } else {
+          showElement = this.renderBookEmpty()
+        }
+
+        return showElement
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<ShopCart />)
+  </script>
+</body>
+
+</html>
