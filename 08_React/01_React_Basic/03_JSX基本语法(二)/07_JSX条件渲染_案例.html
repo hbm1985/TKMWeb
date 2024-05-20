@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          message: "Hello World",
+          show: true
+        }
+      }
+
+      render() {
+        const { message, show } = this.state
+        return (
+          <div>
+            <button onClick={() => this.setState({ show: !show })}>切换显示</button>
+            {/* 三元运算符，并利用了undefined不会在JSX中渲染的特性 */}
+            <div>{show ? <h2>{message}</h2> : undefined}</div>
+            <div>{show && <h2>{message}</h2>}</div>
+            {/* 模拟Vue中v-show的效果 */}
+            <div style={{ display: show ? "block" : "none" }}><h2>{message}</h2></div>
+            <div style={{ width: "100px", height: "100px", backgroundColor: "red" }}></div>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>
