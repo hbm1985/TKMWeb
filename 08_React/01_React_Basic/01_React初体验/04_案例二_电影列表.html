@@ -53,7 +53,6 @@
                 {
                   movies.map(movie => {
                     {/* key：列表项的attribute，必须唯一，保证diff算法效率 */ }
-                    {/* 区别于Vue，React不指定key，直接报错 */ }
                     return <li key={movie.id}>{movie.name}</li>
                   })
                 }
