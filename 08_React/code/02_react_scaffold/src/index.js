@@ -39,20 +39,58 @@
     所以我们必须在自己的电脑上安装node环境
  */
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+/*
+  目录结构分析
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+  02_react_scaffold
+    node_modules：第三方依赖包
+    README.md：readme说明文档
+    package.json：对整个应用程序的描述：包括应用名称、版本号、依赖包、以及项目的启动、打包等
+    package-lock.json：锁定版本，保证安装的依赖包版本一致
+    public：静态资源文件夹，不会参与打包
+      favicon.ico：应用程序顶部的icon图标
+      index.html：应用程序的index.html入口文件
+      logo192.png：在manifest.json中使用
+      log512.png：在manifest.json中使用
+      manifest.json：和web app配置相关
+      robot.txt：指定搜索引擎可以或者无法爬取哪些文件
+    src：存放自己编写的代码
+      App.css：App组件相关的样式
+      App.js：App组件的代码文件
+      App.test.js：App组件的测试代码文件
+      index.css：全局的样式文件
+      index.js：整个应用程序的入口文件
+      logo.svg：首页所展示的React图标
+      serviceWorker.js：默认帮助我们写好的注册PWA相关的代码
+      setupTest.js：测试初始化文件
+ */
+
+/*
+  了解PWA
+
+  整个目录结构都非常好理解，只有一个PWA相关的概念：
+    PWA全称Progressiv Web App，即渐进式WEB应用
+    一个PWA应用首先是一个网页，可以通过Web技术编写出一个网页应用
+    随后添加上App Manifest和Service Worker来实现PWA的安装和离线等功能
+    这种Web存在的形式，我们也称之为Web App
+
+  PWA解决了哪些问题呢？
+    可以添加至主屏幕，点击主屏幕图标可以实现启动动画以及隐藏地址栏
+    实现离线缓存功能，即使用户手机没有网络，依然可以使用一些离线功能
+    实现了消息推送
+    等等一系列类似于Native App相关的功能
+
+  更多PWA相关的知识，可以自行去学习
+    https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps
+ */
+
+import React from "react"
+import ReactDOM from "react-dom/client"
+import App from "./App"
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render((
   <React.StrictMode>
     <App />
   </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+))
