@@ -1,0 +1,116 @@
+<!-- 
+  React事件绑定
+
+  如果原生DOM有一个监听事件，我们可以如何操作呢？
+    方式一：获取DOM原生，添加监听事件
+    方式二：在HTML原生中，直接绑定onclick
+
+  在React中是如何操作呢？我们来实现一下React中的事件监听，这里主要有两点不同
+    React事件的命名采用小驼峰（onXxx），而不是纯小写（onxxx）
+    我们需要通过{}传入一个事件处理函数，这个函数会在事件发生时被执行
+ -->
+
+<!-- 
+  this的绑定问题
+
+  在事件执行后，我们可能需要获取当前类的对象中相关的属性，这个时候需要用到this
+    如果我们这里直接打印this，也会发现它是一个undefined
+
+  为什么是undefined呢？
+    原因是btnClick函数并不是我们主动调用的，而是当button发生点击时，React内部调用了btnClick函数
+    而它内部调用时，并不知道要如何绑定正确的this
+
+  如何解决this的问题呢？
+    方案一：bind给btnClick显式绑定this
+    方案二：使用ES6 class field语法
+    方案三：事件监听时传入箭头函数（推荐）
+ -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    /* 
+      this的四种绑定：
+      1.默认绑定：独立运行 => foo()
+      2.隐式绑定：通过对象执行 => obj.foo()
+      3.显式绑定：call/apply/bind
+      4.new绑定：new Foo()
+     */
+
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          count: 0
+        }
+
+        this.btn1Click2 = this.btn1Click1.bind(this)
+      }
+
+      btn1Click1() {
+        console.log("btn1Click1:", this)
+        const { count } = this.state
+        this.setState({ count: count + 1 })
+      }
+
+      //  ES6 class fields
+      //  这样定义的内容，会存在实例上，而非类的显式原型上
+      //  这个箭头函数执行时，根据规则，在上层作用域查找this，即当前组件实例
+      //  此方式的缺点：函数本应该存在类的显式原型上，而非实例上
+      btn2Click = () => {
+        console.log("btn2Click:", this)
+        const { count } = this.state
+        this.setState({ count: count + 1 })
+      }
+
+      btn3Click() {
+        console.log("btn3Click:", this)
+        const { count } = this.state
+        this.setState({ count: count + 1 })
+      }
+
+      render() {
+        const { count } = this.state
+        return (
+          <div>
+            <h2>当前计数：{count}</h2>
+            {/* 此处仅仅是将函数传递，并非调用，因此不是隐式绑定 */}
+            {/* <button onClick={this.btn1Click1}>按钮1</button> */}
+
+            {/* this绑定方式一：bind绑定 */}
+            <button onClick={this.btn1Click1.bind(this)}>按钮1</button>
+            <button onClick={this.btn1Click2}>按钮1</button>
+            <hr />
+
+            {/* this绑定方式一：ES class fields */}
+            <button onClick={this.btn2Click}>按钮2</button>
+            <hr />
+
+            {/* this绑定方式三：直接传入一个箭头函数 */}
+            {/* 此方式的好处：函数仍然在类的显式原型上，且解决了函数的this指向问题 */}
+            <button onClick={() => this.btn3Click()}>按钮3</button>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>
