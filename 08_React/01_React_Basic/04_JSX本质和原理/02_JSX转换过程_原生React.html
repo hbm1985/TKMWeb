@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <!-- 既然使用了React.createElement，就不需要babel转换了 -->
+  <!-- <script src="../libs/babel.min.js"></script> -->
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+      }
+
+      render() {
+        //  不使用babel，通过React.createElement手动实现组件结构
+        return React.createElement(
+          "div",
+          null,
+          React.createElement(
+            "div",
+            {
+              className: "header"
+            },
+            "Header"
+          ),
+          React.createElement(
+            "div",
+            {
+              className: "header"
+            },
+            React.createElement(
+              "div",
+              {
+                className: "banner"
+              },
+              "Banner",
+              React.createElement(
+                "ul",
+                null,
+                React.createElement(
+                  "li",
+                  null,
+                  "列表项1"
+                ),
+                React.createElement(
+                  "li",
+                  null,
+                  "列表项2"
+                ),
+                React.createElement(
+                  "li",
+                  null,
+                  "列表项3"
+                ),
+                React.createElement(
+                  "li",
+                  null,
+                  "列表项4"
+                ),
+                React.createElement(
+                  "li",
+                  null,
+                  "列表项4"
+                )
+              )
+            )
+          ),
+          React.createElement(
+            "div",
+            {
+              className: "header"
+            },
+            "Footer"
+          ),
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(React.createElement(App, null))
+  </script>
+</body>
+
+</html>

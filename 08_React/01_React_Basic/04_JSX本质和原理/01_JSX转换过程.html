@@ -1,0 +1,74 @@
+<!-- 
+  JSX的本质
+
+  实际上，JSX仅仅只是React.createElement(type, config, children)函数的语法糖
+    所有的JSX最终都会被转成React.createElement的函数调用
+
+  React.createEmelent需要传递三个参数：
+
+  参数一：type
+    当前ReactElement的类型
+    如果是标签元素，那么就使用字符串表示，比如："div"
+    如果是组件元素，那么就直接使用组件的名称，比如：App
+
+  参数二：config
+    所有JSX中的属性（attribute）都在config中以对象的key和value的形式存储
+    比如传入className作为元素的class
+
+  参数三：children
+    存放在标签中的内容，以children数组的方式进行存储
+    当然，如果是多个元素呢？React内部有对它们进行处理
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../libs/react.js"></script>
+  <script src="../libs/react-dom.js"></script>
+  <script src="../libs/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+      }
+
+      render() {
+        //  return的内容就是JSX
+        //  浏览器无法识别JSX，需要Babel将JSX转换为JS
+        //  最终会被转换为React.createElelemt
+        return (
+          <div>
+            <div className="header">Header</div>
+            <div className="content">
+              <div>Banner</div>
+              <ul>
+                <li>列表项1</li>
+                <li>列表项2</li>
+                <li>列表项3</li>
+                <li>列表项4</li>
+                <li>列表项5</li>
+              </ul>
+            </div>
+            <div className="footer">
+              footer
+            </div>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  </script>
+</body>
+
+</html>
