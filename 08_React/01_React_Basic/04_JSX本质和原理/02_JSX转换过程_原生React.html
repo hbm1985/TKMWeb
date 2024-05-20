@@ -22,65 +22,40 @@
 
       render() {
         //  不使用babel，通过React.createElement手动实现组件结构
-        return React.createElement(
+        //  /*#__PURE__*/：纯函数，有助于打包时的tree-shaking
+        return /*#__PURE__*/ React.createElement(
           "div",
           null,
-          React.createElement(
+  /*#__PURE__*/ React.createElement(
             "div",
             {
               className: "header"
             },
             "Header"
           ),
-          React.createElement(
+  /*#__PURE__*/ React.createElement(
             "div",
             {
-              className: "header"
+              className: "content"
             },
-            React.createElement(
-              "div",
-              {
-                className: "banner"
-              },
-              "Banner",
-              React.createElement(
-                "ul",
-                null,
-                React.createElement(
-                  "li",
-                  null,
-                  "列表项1"
-                ),
-                React.createElement(
-                  "li",
-                  null,
-                  "列表项2"
-                ),
-                React.createElement(
-                  "li",
-                  null,
-                  "列表项3"
-                ),
-                React.createElement(
-                  "li",
-                  null,
-                  "列表项4"
-                ),
-                React.createElement(
-                  "li",
-                  null,
-                  "列表项4"
-                )
-              )
+    /*#__PURE__*/ React.createElement("div", null, "Banner"),
+    /*#__PURE__*/ React.createElement(
+              "ul",
+              null,
+      /*#__PURE__*/ React.createElement("li", null, "列表项1"),
+      /*#__PURE__*/ React.createElement("li", null, "列表项2"),
+      /*#__PURE__*/ React.createElement("li", null, "列表项3"),
+      /*#__PURE__*/ React.createElement("li", null, "列表项4"),
+      /*#__PURE__*/ React.createElement("li", null, "列表项5")
             )
           ),
-          React.createElement(
+  /*#__PURE__*/ React.createElement(
             "div",
             {
-              className: "header"
+              className: "footer"
             },
-            "Footer"
-          ),
+            "footer"
+          )
         )
       }
     }
