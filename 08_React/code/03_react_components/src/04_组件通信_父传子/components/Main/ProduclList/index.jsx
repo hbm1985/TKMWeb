@@ -10,7 +10,10 @@ export default class ProductList extends Component {
         <ul>
           {
             products.map(product => {
-              return <li key={product.id}>{product.name}</li>
+              return <li key={product.acm}>
+                <h3>{product.title}</h3>
+                <img src={product.image} alt={product.title} width="200" />
+              </li>
             })
           }
         </ul>

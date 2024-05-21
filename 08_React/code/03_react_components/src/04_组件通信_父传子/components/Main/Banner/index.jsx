@@ -15,13 +15,16 @@ export default class Banner extends Component {
     return (
       <div>
         <h2>Banner</h2>
-        <ol>
+        <ul>
           {
             banners.map(banner => {
-              return <li key={banner.id}>{banner.name}</li>
+              return <li key={banner.acm}>
+                <h3>{banner.title}</h3>
+                <img src={banner.image} alt={banner.title} width="200" />
+              </li>
             })
           }
-        </ol>
+        </ul>
       </div>
     )
   }
