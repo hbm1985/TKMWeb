@@ -38,11 +38,23 @@ import React, { Component } from "react"
 import HelloWorld from "./HelloWorld"
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { isShowHW: true }
+  }
+
+  changeShow() {
+    const { isShowHW } = this.state
+    this.setState({ isShowHW: !isShowHW })
+  }
+
   render() {
+    const { isShowHW } = this.state
     return (
       <div>
         App
-        <HelloWorld />
+        <button onClick={() => this.changeShow()}>切换显示/隐藏</button>
+        {isShowHW && <HelloWorld />}
       </div>
     )
   }
