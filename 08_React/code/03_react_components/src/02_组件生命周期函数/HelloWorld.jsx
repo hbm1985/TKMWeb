@@ -44,12 +44,33 @@ export default class HelloWorld extends Component {
   }
 
   //  4.组件的DOM被更新完成：DOM发生更新
-  componentDidUpdate() {
-    console.log("HelloWorld componentDidUpdate")
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("HelloWorld componentDidUpdate:", prevProps, prevState, snapshot)
   }
 
   //  5.组件从DOM中卸载：从DOM移除
   componentWillUnmount() {
     console.log("HelloWorld componentWillUnmount")
+  }
+
+  //  不常用的生命周期方法：组件是否需要更新
+  //  返回值：true则继续执行render，false则不执行render
+  //  PureComponent在此方法中做了浅层比较
+  shouldComponentUpdate(props, state) {
+    console.log("HelloWorld shouldComponentUpdate:", props, state)
+    //  state的新旧message相同，则不需要更新了
+    if (state.message === this.state.message) {
+      return false
+    }
+    return true
+  }
+
+  //  更新DOM之前的回调
+  //  返回值会在componentDidUpdate的第三个参数接受
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log("HelloWorld getSnapshotBeforeUpdate:", prevProps, prevState)
+    return {
+      scrollTop: 1000
+    }
   }
 }

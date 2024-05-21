@@ -31,7 +31,7 @@
     componentDidUpdate（组件已更新）
 
   Unmounting（卸载阶段）：
-    ucomponentWillnmount（组件即将被卸载）
+    componentWillUnmount（组件即将被卸载）
  */
 
 /*
@@ -59,6 +59,37 @@
     componentWillUnmount会在组件卸载及销毁之前调用
       在此方法中执行必要的清理工作
       例如：清除定时器、取消网络请求、或清除在componentDidMount中创建的订阅等
+ */
+
+/*
+  不常用生命周期函数
+
+  除了上面介绍的生命周期函数之外，还有一些不常用的生命周期函数：
+    getDerivedStateFromProps：state的值在任何时候都依赖于props，该方法返回一个对象来更新state
+    getSnapshotBeforeUpdate：在React更新DOM之前回调的一个函数，可以获取到DOM更新前的一些信息
+    shouldComponentUpdate：组件是否要被更新，后续讲到性能优化时再详细讲解
+
+  Mounting
+    constructor
+    getDerivedStateFromProps
+    render
+    componentDidMount
+
+  Updating
+    getDerivedStateFromProps
+    shouldComponentUpdate（forceUpdate不会触发）
+    render
+    componentDidUpdate
+    getSnapshotBeforeUpdate
+    componentDidUpdate
+
+  Unmounting：
+    componentWillUnmount
+
+  另外，React中海提供了一些过期的生命周期函数，这些函数已经不再推荐使用
+
+  更详细的生命周期相关内容，可以参考官网
+    https://zh-hans.legacy.reactjs.org/docs/react-component.html
  */
 
 import React, { Component } from "react"
