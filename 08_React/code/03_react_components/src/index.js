@@ -38,11 +38,13 @@
 
 import React from "react"
 import ReactDOM from "react-dom/client"
-import App from "./App"
+import AppClass from "./App_Class"
+import AppFunction from "./App_Function"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    <App />
+    <AppClass />
+    <AppFunction />
   </React.StrictMode>
 )
