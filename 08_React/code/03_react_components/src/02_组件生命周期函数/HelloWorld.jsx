@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 
 //  挂载流程：constructor -> render -> componentDidMount
+//  更新流程：render -> componentDidMount
 export default class HelloWorld extends Component {
   //  1.构造方法：constructor
   constructor(props) {
@@ -23,7 +24,6 @@ export default class HelloWorld extends Component {
   }
 
   //  3.组件被渲染到DOM：被挂载到DOM
-  //  至此，组件的内容被渲染到界面上
   componentDidMount() {
     console.log("HelloWorld componentDidMount")
   }

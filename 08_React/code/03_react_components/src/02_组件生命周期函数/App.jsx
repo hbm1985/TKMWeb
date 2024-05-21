@@ -23,12 +23,12 @@
 
   Mounting（挂载阶段）：
     constructor（组件被实例化）
-    render（组件被渲染）
+    render（组件首次被渲染）
     componentDidMount（组件已挂载）
 
   Updating（更新阶段：new props、setState、forceUpdate）：
-    render（组件被渲染）
-    componentDidMount（组件已挂载）
+    render（组件重新被渲染）
+    componentDidUpdate（组件已更新）
 
   Unmounting（卸载阶段）：
     ucomponentWillnmount（组件即将被卸载）
