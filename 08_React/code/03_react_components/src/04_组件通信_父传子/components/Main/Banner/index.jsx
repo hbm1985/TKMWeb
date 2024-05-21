@@ -20,7 +20,6 @@ export default class Banner extends Component {
             banners.map(banner => {
               return <li key={banner.acm}>
                 <h3>{banner.title}</h3>
-                <img src={banner.image} alt={banner.title} width="200" />
               </li>
             })
           }
