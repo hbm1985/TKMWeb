@@ -38,8 +38,8 @@
 
 import React from "react"
 import ReactDOM from "react-dom/client"
-import AppClass from "./App_Class"
-import AppFunction from "./App_Function"
+import AppClass from "./01_类组件和函数组件/App_Class"
+import AppFunction from "./01_类组件和函数组件/App_Function"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
