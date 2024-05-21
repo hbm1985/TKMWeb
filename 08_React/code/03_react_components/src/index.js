@@ -36,8 +36,6 @@
   当然还有很多组件的其他状态：比如异步组件、高阶组件，后续再学习
  */
 
-
-  
 import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
