@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+//  挂载流程：constructor -> render -> componentDidMount
 export default class HelloWorld extends Component {
   //  1.构造方法：constructor
   constructor(props) {
