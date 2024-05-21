@@ -34,6 +34,33 @@
     ucomponentWillnmount（组件即将被卸载）
  */
 
+/*
+  生命周期函数
+
+  constructor
+    如果不初始化state或不进行方法绑定，则不需要为React组件实现构造函数
+    constructor中通常只做两件事：
+      通过给this.state赋值对象来初始化内部的state
+      为事件绑定实例（bind this）
+
+  componentDidMount
+    componentDidMount会在组件挂载后（插入DOM树中）立即调用
+    componentDidMount通常进行那些操作呢？
+      依赖于DOM的操作可以在这里进行（因为可以获取到DOM对象了）
+      在此处发送网络请求最好的地方（官方建议）
+      可以在此处添加一些订阅（在componentWillUnmount中取消订阅）
+
+  componentDidUpdate
+    componentDidUpdate会在更新后被立即调用，首次渲染不会执行此方法
+      当组件更新后，可以在此处对DOM进行操作（可以保证DOM是最新的）
+      如果你对更新前后的props进行比较，也可以在此处进行网络请求
+
+  componentWillUnmount
+    componentWillUnmount会在组件卸载及销毁之前调用
+      在此方法中执行必要的清理工作
+      例如：清除定时器、取消网络请求、或清除在componentDidMount中创建的订阅等
+ */
+
 import React, { Component } from "react"
 import HelloWorld from "./HelloWorld"
 

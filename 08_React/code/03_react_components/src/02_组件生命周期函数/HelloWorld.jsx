@@ -48,7 +48,7 @@ export default class HelloWorld extends Component {
     console.log("HelloWorld componentDidUpdate")
   }
 
-  //  5.组件从DOM中卸载：从COM移除
+  //  5.组件从DOM中卸载：从DOM移除
   componentWillUnmount() {
     console.log("HelloWorld componentWillUnmount")
   }
