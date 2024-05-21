@@ -40,11 +40,12 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import AppClass from "./01_类组件和函数组件/App_Class"
 import AppFunction from "./01_类组件和函数组件/App_Function"
+import App from "./02_组件生命周期函数/App"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-  <React.StrictMode>
-    <AppClass />
-    <AppFunction />
-  </React.StrictMode>
+  //  React.StrictMode在开发模式下，会干扰生命周期，因此先注释掉
+  // <React.StrictMode>
+  <App />
+  // </React.StrictMode>
 )
