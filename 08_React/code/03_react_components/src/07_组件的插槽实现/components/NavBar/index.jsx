@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 import "./style.css"
 
-export class NavBar extends Component {
+class NavBar extends Component {
 
   static propTypes = {
     //  限定children必须是数组，也就是说必须传入多个子元素

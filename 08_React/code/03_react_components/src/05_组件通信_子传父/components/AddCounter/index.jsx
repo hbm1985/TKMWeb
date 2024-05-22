@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-export class Counter extends Component {
+class Counter extends Component {
 
   addCount(number) {
     //  父组件向子组件传递函数，父组件可以调用

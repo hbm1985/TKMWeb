@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./style.css"
 
-export class TabBar extends Component {
+class TabBar extends Component {
   render() {
     const { items } = this.props
     console.log(items)

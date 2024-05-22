@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-export class Content extends Component {
+class Content extends Component {
   render() {
     const { title } = this.props
     return (

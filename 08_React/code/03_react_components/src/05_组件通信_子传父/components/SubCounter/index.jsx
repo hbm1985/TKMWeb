@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-export class SubCounter extends Component {
+class SubCounter extends Component {
 
   subCount(number) {
     const { onDecrement } = this.props

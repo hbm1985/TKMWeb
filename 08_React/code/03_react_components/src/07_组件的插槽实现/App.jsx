@@ -31,7 +31,7 @@ import React, { Component } from "react"
 import NavBar from "./components/NavBar"
 import TabBar from "./components/TabBar"
 
-export class App extends Component {
+class App extends Component {
   render() {
     //  构建tabBar的子元素
     const tabBarItems = [

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./style.css"
 
-export class TabControl extends Component {
+class TabControl extends Component {
   constructor(props) {
     super(props)
 
