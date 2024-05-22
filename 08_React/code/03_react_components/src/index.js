@@ -36,24 +36,6 @@
   当然还有很多组件的其他状态：比如异步组件、高阶组件，后续再学习
  */
 
-/*
-  参数propTypes
-
-  对于传递给子组件的数据，有时候我们可能希望进行验证，特别是对于大型项目来说：
-    当然，如果项目中默认继承了Flow或者TypeScript，那么就直接可以进行类型验证
-    但是，即使我们没有使用Flow或者TypeScript，也可以通过prop-types库来进行参数验证
-
-  从React15.5开始，React.PropTypes已移入另一个包中：prop-types库
-
-  更多的验证方式，可以参考官网：https://zh-hans.legacy.reactjs.org/docs/typechecking-with-proptypes.html
-    比如验证数组，并且数组中包含哪些元素
-    比如验证对象，并且对象中包含哪些key预计value是什么类型
-    比如某个元素是必须的
-
-  如果没有传递，我们希望有默认值呢？
-    我们使用defaultProps就可以了
- */
-
 import React from "react"
 import ReactDOM from "react-dom/client"
 // import AppClass from "./01_类组件和函数组件/App_Class"
@@ -62,7 +44,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./03_组件开发的嵌套关系/App"
 // import App from "./04_组件通信_父传子/App"
 // import App from "./05_组件通信_子传父/App"
-import App from "./06_组件通信案例练习/App"
+// import App from "./06_组件通信案例练习/App"
+import App from "./07_组件的插槽实现/App"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(

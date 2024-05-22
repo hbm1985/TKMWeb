@@ -13,6 +13,24 @@
     子组件通过props参数获取父组件传递过来的数据
  */
 
+/*
+  参数propTypes
+
+  对于传递给子组件的数据，有时候我们可能希望进行验证，特别是对于大型项目来说：
+    当然，如果项目中默认继承了Flow或者TypeScript，那么就直接可以进行类型验证
+    但是，即使我们没有使用Flow或者TypeScript，也可以通过prop-types库来进行参数验证
+
+  从React15.5开始，React.PropTypes已移入另一个包中：prop-types库
+
+  更多的验证方式，可以参考官网：https://zh-hans.legacy.reactjs.org/docs/typechecking-with-proptypes.html
+    比如验证数组，并且数组中包含哪些元素
+    比如验证对象，并且对象中包含哪些key预计value是什么类型
+    比如某个元素是必须的
+
+  如果没有传递，我们希望有默认值呢？
+    我们使用defaultProps就可以了
+ */
+
 import React, { Component } from "react"
 import Header from "./components/Header"
 import Main from "./components/Main"
