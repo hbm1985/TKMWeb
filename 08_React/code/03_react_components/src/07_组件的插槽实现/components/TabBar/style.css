@@ -1,0 +1,10 @@
+.tab-bar {
+  display: flex;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+}
+
+.tab-bar .item {
+  flex: 1;
+}
