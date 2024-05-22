@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Banner from "./Banner"
+import PrductList from "./ProductList"
 
 class Home extends Component {
 
@@ -12,6 +13,7 @@ class Home extends Component {
         <div>姓名：{name}</div>
         <div>年龄：{age}</div>
         <Banner />
+        <PrductList />
       </div>
     )
   }
