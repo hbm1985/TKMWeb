@@ -1,0 +1,21 @@
+.tab-control {
+  display: flex;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  font-size: 20px;
+}
+
+.tab-control .item {
+  flex: 1;
+}
+
+.tab-control .item.active {
+  color: red;
+  font-weight: 700;
+}
+
+.tab-control .item.active .title {
+  padding: 5px 0;
+  border-bottom: 2px solid red;
+}
