@@ -82,9 +82,9 @@
         /*
           思考几个问题：
           1.原生DOM事件，btnClick函数内部的this是什么：响应该事件的DOM对象
-          2.render函数中的this是什么：App组件实例
-          3.btnClick函数定义在哪里：App的显式原型，因此render中调用this.btnClick，根据原型链可以找到此函数
-          4.btnClick是由谁触发的：不是通过App组件实例触发的，因此btnClick内部的this并非App组件实例
+          2.render函数中的this是什么：Root组件实例
+          3.btnClick函数定义在哪里：Root的显式原型，因此render中调用this.btnClick，根据原型链可以找到此函数
+          4.btnClick是由谁触发的：不是通过Root组件实例触发的，因此btnClick内部的this并非App组件实例
           5.默认情况下，btnClick函数this为什么为undefined：btnClick独立调用，为window，而babel开启严格模式，因此为undefined
          */
         console.log("btnClick:", this)
@@ -99,6 +99,7 @@
         //  setState完成的操作：
         //  1.修改state中的值
         //  2.重新渲染（执行render函数）
+        //  备注：Flutter中的setState，借鉴了React
         this.setState({ info })
       }
 
