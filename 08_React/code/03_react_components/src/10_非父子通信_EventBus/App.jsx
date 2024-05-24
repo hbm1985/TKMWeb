@@ -45,6 +45,7 @@ export default class App extends Component {
   }
 
   componentWillUnmount() {
+    //  需要考虑：销毁时传入的回调函数，要与监听时传入的回调函数一致
     eventBus.off("bannerPrev", this.onBannerPrev)
     eventBus.off("bannerNext", this.onBannerNext)
   }
