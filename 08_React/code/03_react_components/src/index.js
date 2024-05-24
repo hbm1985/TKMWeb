@@ -49,7 +49,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./08_组件作用域插槽/App"
 // import App from "./09_非父子通信_Context/App"
 // import App from "./10_非父子通信_EventBus/App"
-import App from "./11_setState详细使用/App"
+// import App from "./11_setState详细使用/01_setState的三种用法"
+import App from "./11_setState详细使用/02_setState是异步的"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(

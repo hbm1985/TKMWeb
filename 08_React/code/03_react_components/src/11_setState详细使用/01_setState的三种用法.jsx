@@ -15,10 +15,6 @@
     }
  */
 
-/*
-  setState异步更新
- */
-
 import React, { Component } from "react"
 
 export default class App extends Component {
