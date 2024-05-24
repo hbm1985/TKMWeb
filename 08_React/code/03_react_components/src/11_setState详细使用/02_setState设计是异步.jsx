@@ -29,28 +29,6 @@ export default class App extends Component {
   }
 
   changeMessage() {
-    //  1.setState的基本用法
-    //  创建一个新的对象：{ message: "Hello React" }，将此对象合并到原有的state中
-    //  Object.assign(this.state, newState)
-    // this.setState({ message: "Hello React" })
-
-    //  2.setState可以传入一个回调函数
-    //  好处1：可以在回调函数中编写新的state的运算逻辑
-    //  好处2：当前的回调函数，会将之前的state与props传递进来
-    // this.setState((prevState, prevProps) => {
-    //   console.log("setState:", prevState, prevProps)
-    //   return {
-    //     message: "Hello React"
-    //   }
-    // })
-
-    //  3.setState在React的事件处理中，是异步调用
-    //  基于性能考虑，调用setState之后，state并没有立即改变
-    // this.setState({ message: "Hello React" })
-    // console.log("after setState:", this.state)
-
-    //  如果希望在数据更新之后，获取到对应的结果，并执行一些代码，可以在setState中传入第二个参数
-    //  第二个参数：callback
     this.setState({ message: "Hello React" }, () => {
       console.log("after setState:", this.state)
     })
