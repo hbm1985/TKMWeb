@@ -103,7 +103,9 @@ import ReactDOM from "react-dom/client"
 // import App from "./11_setState详细使用/03_setState同步的时机"
 // import App from "./12_render函数的优化/App"
 // import App from "./13_数据不可变的力量/App"
-import App from "./14_ref获取DOM操作/App"
+// import App from "./14_ref获取DOM和组件/01_ref获取DOM"
+// import App from "./14_ref获取DOM和组件/02_ref获取类组件实例"
+import App from "./14_ref获取DOM和组件/03_ref获取函数组件的DOM"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
