@@ -23,27 +23,35 @@ export default class App extends PureComponent {
     super(props)
 
     this.state = {
-      username: "bread24"
+      username: "bread24",
+      password: "114514"
     }
   }
-  onInputChange(event) {
+
+  onUsernameChange(event) {
     console.log("onInputChange:", event.target.value)
     this.setState({ username: event.target.value })
   }
 
+  onPasswordChange(event) {
+    this.setState({ password: event.target.value })
+  }
+
   render() {
-    const { username } = this.state
+    const { username, password } = this.state
     return (
       <div>
         <h2>用户名：{username}</h2>
+        <h2>密码：{password}</h2>
         {/* input、textarea等元素，绑定了value属性，就会变成受控组件 */}
         {/* 绑定了values属性，但没有绑定onChange，则会抛出警告 */}
         {/* You provided a `value` prop to a form field without an `onChange` handler.This will render a read - only field */}
         {/* 回顾一下Vue中的v-model：本质为v-bind与v-on */}
-        <input type="text" value={username} onChange={(e) => this.onInputChange(e)} />
+        <input type="text" value={username} onChange={e => this.onUsernameChange(e)} />
+        <input type="password" value={password} onChange={e => this.onPasswordChange(e)} />
 
         {/* 未绑定value的input、textarea等元素，就是非受控组件 */}
-        <input type="text" />
+        {/* <input type="text" /> */}
       </div>
     )
   }
