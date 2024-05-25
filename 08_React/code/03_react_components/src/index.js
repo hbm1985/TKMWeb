@@ -105,7 +105,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./13_数据不可变的力量/App"
 // import App from "./14_ref获取DOM和组件/01_ref获取DOM"
 // import App from "./14_ref获取DOM和组件/02_ref获取类组件实例"
-import App from "./14_ref获取DOM和组件/03_ref获取函数组件的DOM"
+// import App from "./14_ref获取DOM和组件/03_ref获取函数组件的DOM"
+import App from "./15_受控组件和非受控组件/App"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
