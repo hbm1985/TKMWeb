@@ -36,6 +36,55 @@
   当然还有很多组件的其他状态：比如异步组件、高阶组件，后续再学习
  */
 
+/*
+  React更新机制
+
+  我们在前面已经学习了React的渲染流程：
+    JSX -> 虚拟DOM -> 真实DOM
+
+  那么React的更新流程呢？
+    props/state改变 -> render函数重新执行 -> 产生新的DOM树 -> 新旧DOM树进行diff -> 计算出差异进行更新 -> 更新到真实的DOM
+ */
+
+/*
+  React的更新流程
+
+  React在props或state发生改变时，会调用React的render方法，创建一棵不同的树
+
+  React需要基于这两棵不同的树之间的差别来判断如何有效的更新UI：
+    如果一棵树参考另一棵树进行完全比较更新，那么即使是最先进的算法，该算法的复杂程度为O(n^3)，其中n是树中元素的数量
+    https://grfia.dlsi.ua.es/ml/algorithms/references/editsurvey_bille.pdf
+    如果在React中使用了该算法，那么展示1000个元素所需要执行的计算量将在十亿的量级范围
+    这个开销太过样昂贵了，React的更新性能会变得非常低效
+
+  于是，React对这个算法进行了优化，将其优化成了O(n)，如何优化的呢？
+    同层节点之间相互比较，不会跨节点比较
+    不同类型的节点，产生不同的树结构
+    开发中，可以通过key来指定哪些节点在不同的渲染下保持稳定
+ */
+
+/*
+  keys的优化
+
+  我们在前面遍历列表时，总是会提示一个警告，让我们加入一个key属性：
+    Warning: Each child in a list should have a unique "key" prop
+
+  方式一：在最后插入数据
+    这种情况，有无key意义并不大
+
+  方式二：在前面插入数据
+    这种做法，在没有key的情况下，所有的li都需要进行修改
+
+  当子元素拥有key时，React使用key来匹配原有树上的子元素以及最新树上的子元素
+    当下面这种场景，key为111和222的元素仅仅进行卫衣，不需要进行任何的修改
+    将key为333的元素插入到最前面的位置即可
+
+  key的注意事项：
+    key应该是唯一的
+    key不要使用随机数（随机数在下一次render的时候，会重新生成新的数字）
+    使用index作为key，对性能是没有优化的（实际开发中，将数据的id作为key）
+ */
+
 import React from "react"
 import ReactDOM from "react-dom/client"
 // import AppClass from "./01_类组件和函数组件/App_Class"
@@ -51,7 +100,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./10_非父子通信_EventBus/App"
 // import App from "./11_setState详细使用/01_setState的三种用法"
 // import App from "./11_setState详细使用/02_setState设计是异步"
-import App from "./11_setState详细使用/03_setState同步的时机"
+// import App from "./11_setState详细使用/03_setState同步的时机"
+import App from "./12_render函数的优化/App"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(

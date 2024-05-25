@@ -7,8 +7,6 @@
     https://github.com/reactwg/react-18/discussions/21
  */
 
-
-
 import React, { Component } from "react"
 import { flushSync } from "react-dom"
 
