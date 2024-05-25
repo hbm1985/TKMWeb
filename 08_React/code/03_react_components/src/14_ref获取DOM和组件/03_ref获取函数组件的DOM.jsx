@@ -10,10 +10,21 @@
 
 import React, { PureComponent, createRef, forwardRef } from "react"
 
+class Home extends PureComponent {
+  render() {
+    return (
+      <div>
+        <h2>Home</h2>
+      </div>
+    )
+  }
+}
+
 const HelloWorld = forwardRef(
   function (props, ref) {
     return (
       <div>
+        {/* <Home ref={ref} /> */}
         <h2 ref={ref}>Hello World</h2>
       </div>
     )
