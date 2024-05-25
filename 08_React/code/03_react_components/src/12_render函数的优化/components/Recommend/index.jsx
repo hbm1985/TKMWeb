@@ -1,13 +1,13 @@
-import React, { Component } from "react"
+import React, { PureComponent } from "react"
 
-export default class Recommend extends Component {
+export default class Recommend extends PureComponent {
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.counter !== this.props.counter) {
-      return true
-    }
-    return false
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (nextProps.counter !== this.props.counter) {
+  //     return true
+  //   }
+  //   return false
+  // }
 
   render() {
     console.log("Recommend render")

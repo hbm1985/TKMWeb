@@ -30,11 +30,48 @@
     但是因为state发生了改变，默认shouldComponentUpdate返回true，所以render方法还是被重新调用了
  */
 
-import React, { Component } from "react"
+/*
+  PureComponent
+
+  如果所有的类组件，我们都需要手动来实现shouldComponentUpdate，那么会给我们开发者增加非常多的工作量
+    我们来摄像一下shouldComponentUpdate中的各种判断的目的是什么？
+    props或者state中的数据是否发生了改变，来决定shouldComponentUpdate返回true或者false
+
+  事实上React已经考虑到了这一点，所以React已经默认帮我们实现好了：
+    将class继承自React.PureComponent
+ */
+
+/*
+  shallowEqual方法
+  
+  这个方法中，调用!shallowEqual(oldProps, newProps) || !shallowEqual(oldState, newState)，这个shallowEqual就是进行浅层比较
+ */
+
+/*
+  高阶组件memo
+  
+  目前我们是针对类组件可以使用PureComponent，那么函数式组件呢？
+    事实上函数式组件我们在props没有改变时，也是不希望其重新渲染其DOM树结构的
+
+  我们需要使用一个高阶组件（函数）memo：
+    //  使用memo函数，将函数组件包裹
+    const Profile = memo(function (props) {
+      return (
+        <div>
+          {props.message}
+        </div>
+      )
+    })
+
+    export defaulr Profile
+ */
+
+import React, { PureComponent } from "react"
 import Home from "./components/Home"
 import Recommend from "./components/Recommend"
+import Profile from "./components/Profile"
 
-export default class App extends Component {
+export default class App extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -56,12 +93,12 @@ export default class App extends Component {
     })
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.message !== nextState.message || this.state.counter !== nextState.counter) {
-      return true
-    }
-    return false
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (this.state.message !== nextState.message || this.state.counter !== nextState.counter) {
+  //     return true
+  //   }
+  //   return false
+  // }
 
   render() {
     console.log("App render")
@@ -74,6 +111,7 @@ export default class App extends Component {
         <button onClick={() => this.increment()}>+1</button>
         <Home message={message} />
         <Recommend counter={counter} />
+        <Profile message={message} />
       </div>
     )
   }

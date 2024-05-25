@@ -1,6 +1,6 @@
-import React, { Component } from "react"
+import React, { PureComponent } from "react"
 
-export default class Home extends Component {
+export default class Home extends PureComponent {
 
   constructor(props) {
     super(props)
@@ -11,12 +11,12 @@ export default class Home extends Component {
 
   //  子组件，不仅要比对state，也要比对props
   //  针对shouldComponentUpdate的优化，也称为SCU优化
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.message !== this.props.message || nextState.friends !== this.state.friends) {
-      return true
-    }
-    return false
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (nextProps.message !== this.props.message || nextState.friends !== this.state.friends) {
+  //     return true
+  //   }
+  //   return false
+  // }
 
   render() {
     console.log("Home render")
