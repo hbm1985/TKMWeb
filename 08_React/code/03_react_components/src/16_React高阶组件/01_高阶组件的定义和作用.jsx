@@ -9,11 +9,21 @@
 
   那么什么是高阶组件呢？
     高阶组件的英文是Higher-Order Components，简称HOC
-    官方的定义：高阶组件是参数为组件，返回值为新组件的函数（回顾之前学习的memo）
+    官方的定义：高阶组件是参数为组件，返回值为新组件的函数（回顾之前学习的memo、forward）
 
   我们可以进行如下的解释：
     首先，高阶组件本身不是一个组件，而是一个函数
     其次，这个函数的参数是一个组件，返回值也是一个组件
+ */
+
+/*
+  高阶组件的定义
+
+  高阶组件并不是React API的一部分，它是基于React的组合特性而形成的设计模式
+
+  高阶组件在一些React第三方库中非常常见：
+    比如redux中的connect
+    比如react-router中的withRouter
  */
 
 import React, { PureComponent } from "react"

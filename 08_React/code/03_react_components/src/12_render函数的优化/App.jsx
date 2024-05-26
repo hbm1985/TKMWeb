@@ -53,7 +53,7 @@
   目前我们是针对类组件可以使用PureComponent，那么函数式组件呢？
     事实上函数式组件我们在props没有改变时，也是不希望其重新渲染其DOM树结构的
 
-  我们需要使用一个高阶组件（函数）memo：
+  我们需要使用一个高阶组件memo：
     //  使用memo函数，将函数组件包裹
     const Profile = memo(function (props) {
       return (

@@ -5,7 +5,7 @@
     因为函数式组件没有实例，所以不能获取到对应的组件对象
 
   但是，在开发中，我们可能想要获取函数式组件中某个元素的DOM，这个时候我们应该如何操作呢？
-    通过forward高阶函数：将函数式组件包裹起来
+    通过forward高阶组件：将函数式组件包裹起来
  */
 
 import React, { PureComponent, createRef, forwardRef } from "react"
