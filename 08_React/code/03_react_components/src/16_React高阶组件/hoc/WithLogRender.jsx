@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react"
 
 function WithLogRender(OriginComponent) {
+  //  ES6中，类表达式的类名可以省略
   return class extends PureComponent {
 
     UNSAFE_componentWillMount() {
