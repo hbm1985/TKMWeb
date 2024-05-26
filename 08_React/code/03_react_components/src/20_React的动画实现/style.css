@@ -1,15 +1,28 @@
+/* .bread-appear {
+  transform: translateX(-100%);
+
+}
+
+.bread-appear-active {
+  transform: translateX(0);
+  transition: transform 1s ease-in-out;
+} */
+
 /* 进入起始 */
+.bread-appear,
 .bread-enter {
   opacity: 0;
 }
 
 /* 进入过程 */
+.bread-appear-active,
 .bread-enter-active {
   opacity: 1;
   transition: opacity 1s ease-in-out;
 }
 
 /* 进入结束 */
+.bread-appear-done,
 .bread-enter-done {
   opacity: 1;
 }
