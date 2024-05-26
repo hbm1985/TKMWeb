@@ -111,7 +111,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./15_受控组件和非受控组件/03_多个受控组件同一个函数处理"
 // import App from "./15_受控组件和非受控组件/04_checkbox的单选与多选"
 // import App from "./15_受控组件和非受控组件/05_select的单选与多选"
-import App from "./15_受控组件和非受控组件/06_非受控组件演练"
+// import App from "./15_受控组件和非受控组件/06_非受控组件演练"
+import App from "./16_React高阶组件/App"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
