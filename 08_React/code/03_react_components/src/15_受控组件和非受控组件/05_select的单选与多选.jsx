@@ -12,7 +12,9 @@ export default class App extends PureComponent {
         { name: "dance", text: "跳", checked: false },
         { name: "rap", text: "rap", checked: false },
         { name: "basketball", text: "篮球", checked: false },
-      ]
+      ],
+      fruit: "",
+      cities: []
     }
   }
 
@@ -21,12 +23,14 @@ export default class App extends PureComponent {
     //  form的默认提交会刷新界面，因此通常都是我们自己提交数据
     e.preventDefault()
     //  获取数据
-    const { username, password, agree, hobbies } = this.state
+    const { username, password, agree, hobbies, fruit, cities } = this.state
     //  模拟提交
     console.log("username:", username)
     console.log("password:", password)
     console.log("agree:", agree)
     console.log("hobbies:", hobbies.filter(hobby => hobby.checked).map(hobby => hobby.name))
+    console.log("fruit:", fruit)
+    console.log("cities:", cities)
   }
 
   handleValueChange(e) {
@@ -48,8 +52,20 @@ export default class App extends PureComponent {
     }
   }
 
+  handleFruitChange(e) {
+    this.setState({ fruit: e.target.value })
+  }
+
+  handleCitiesChange(e) {
+    //  e.target.selectedOptions：类数组，不可直接调用数组的map等方法
+    //  Array.from()：将可迭代对象，转为数组
+    // const cities = Array.from(e.target.selectedOptions).map(option => option.value)
+    const cities = Array.from(e.target.selectedOptions, option => option.value)
+    this.setState({ cities })
+  }
+
   render() {
-    const { username, password, agree, hobbies } = this.state
+    const { username, password, agree, hobbies, fruit, cities } = this.state
     return (
       <div>
         <form action="/abc" onSubmit={e => this.handleSubmit(e)}>
@@ -108,6 +124,24 @@ export default class App extends PureComponent {
                 )
               })
             }
+          </div>
+
+          {/* 4.select单选 */}
+          <div>
+            <select value={fruit} onChange={e => this.handleFruitChange(e)}>
+              <option value="apple">苹果</option>
+              <option value="banana">香蕉</option>
+              <option value="orange">橘子</option>
+            </select>
+          </div>
+
+          {/* 5.select多选 */}
+          <div>
+            <select multiple value={cities} onChange={e => this.handleCitiesChange(e)}>
+              <option value="beijing">北京</option>
+              <option value="shanghai">上海</option>
+              <option value="guangzhou">广州</option>
+            </select>
           </div>
 
           <button type="submit">提交</button>
