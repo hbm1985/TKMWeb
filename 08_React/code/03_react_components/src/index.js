@@ -115,7 +115,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./16_React高阶组件/01_高阶组件的定义和作用"
 // import App from "./16_React高阶组件/02_高阶组件应用_props增强"
 // import App from "./16_React高阶组件/03_高阶组件应用_context数据共享"
-import App from "./16_React高阶组件/App"
+// import App from "./16_React高阶组件/04_高阶组件应用_登录鉴权"
+import App from "./16_React高阶组件/05_高阶组件应用_拦截生命周期"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
