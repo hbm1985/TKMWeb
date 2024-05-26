@@ -73,13 +73,15 @@
     onExited：离开动画执行结束被触发
  */
 
-import React, { PureComponent } from "react"
+import React, { PureComponent, createRef } from "react"
 import { CSSTransition } from "react-transition-group"
 import "./style.css"
 
 export default class App extends PureComponent {
   constructor(props) {
     super(props)
+
+    this.divRef = createRef()
     this.state = {
       showTitle: true
     }
@@ -94,6 +96,7 @@ export default class App extends PureComponent {
         <CSSTransition
           appear
           in={showTitle}
+          nodeRef={this.divRef}
           classNames="bread"
           timeout={1000}
           unmountOnExit={true}
@@ -104,7 +107,7 @@ export default class App extends PureComponent {
           onExiting={() => console.log("执行离开动画")}
           onExited={() => console.log("离开动画结束")}
         >
-          <div>
+          <div ref={this.divRef}>
             <h2>哈哈哈</h2>
             <div>嘿嘿嘿</div>
           </div>
