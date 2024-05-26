@@ -1,0 +1,31 @@
+/* 进入起始 */
+.bread-enter {
+  opacity: 0;
+}
+
+/* 进入过程 */
+.bread-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+/* 进入结束 */
+.bread-enter-done {
+  opacity: 1;
+}
+
+/* 离开起始 */
+.bread-exit {
+  opacity: 1;
+}
+
+/* 离开过程 */
+.bread-exit-active {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* 离开结束 */
+.bread-exit-done {
+  opacity: 0;
+}
