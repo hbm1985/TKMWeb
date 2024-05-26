@@ -13,6 +13,8 @@
   如何使用SwitchTransision呢？
     SwitchTransition组件里面要包裹CSSTransition或Transition，不能直接包裹想要切换的组件
     SwitchTransition里面的CSSTransition或Transition不再像以前那样接收in属性来判断元素是何种状态，取而代之的是key属性
+
+  https://reactcommunity.org/react-transition-group/switch-transition
  */
 
 import React, { PureComponent, createRef } from "react"
