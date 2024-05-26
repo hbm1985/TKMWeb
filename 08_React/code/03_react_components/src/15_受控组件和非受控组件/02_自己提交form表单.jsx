@@ -22,6 +22,7 @@ export default class App extends PureComponent {
 
   handleSubmit(e) {
     //  阻止默认事件
+    //  form的默认提交会刷新界面，因此通常都是我们自己提交数据
     e.preventDefault()
     //  获取数据
     const { username, password } = this.state
