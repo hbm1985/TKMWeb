@@ -7,6 +7,10 @@
     我们将两者结合起来，使React的state成为“唯一数据源”
     渲染表单的React组件还控制着用户输入过程中表单发生的操作
     被React以这种方式控制取值的表单元素就叫做“受控组件”
+
+  由于在表单元素上设置了value属性，因此显示的值将始终为this.state.value，这使得React的state成为唯一数据源
+
+  由于handleUsernameChange在每次按键时都会执行并更新React的state，因此显示的值将随着用户的输入而更新
  */
 
 import React, { PureComponent } from "react"
