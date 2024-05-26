@@ -113,7 +113,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./15_受控组件和非受控组件/05_select的单选与多选"
 // import App from "./15_受控组件和非受控组件/06_非受控组件演练"
 // import App from "./16_React高阶组件/01_高阶组件的定义和作用"
-import App from "./16_React高阶组件/01_高阶组件应用一_props增强"
+// import App from "./16_React高阶组件/01_高阶组件应用一_props增强"
+import App from "./16_React高阶组件/02_高阶组件应用_context数据共享"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
