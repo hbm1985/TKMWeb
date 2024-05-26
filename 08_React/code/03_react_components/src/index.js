@@ -107,7 +107,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./14_ref获取DOM和组件/02_ref获取类组件实例"
 // import App from "./14_ref获取DOM和组件/03_ref获取函数组件的DOM"
 // import App from "./15_受控组件和非受控组件/01_受控组件的基本使用"
-import App from "./15_受控组件和非受控组件/02_自己提交form表单"
+// import App from "./15_受控组件和非受控组件/02_自己提交form表单"
+import App from "./15_受控组件和非受控组件/03_多个受控组件同一个函数处理"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
