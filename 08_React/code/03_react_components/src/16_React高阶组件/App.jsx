@@ -29,6 +29,13 @@ function hoc(Cpn) {
   }
 
   return NewCpn
+
+  //  定义函数组件
+  // function NewCpn2(props) {
+  //   return <div>NewCpn2</div>
+  // }
+
+  // return NewCpn2
 }
 
 class HelloWorld extends PureComponent {
