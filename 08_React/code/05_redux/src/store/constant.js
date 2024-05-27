@@ -1,0 +1,9 @@
+const CHANGE_NAME = "CHANGE_NAME"
+const CHANGE_AGE = "CHANGE_AGE"
+const ADD_HEIGHT = "ADD_HEIGHT"
+
+module.exports = {
+  CHANGE_NAME,
+  CHANGE_AGE,
+  ADD_HEIGHT
+}
