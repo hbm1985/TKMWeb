@@ -1,0 +1,15 @@
+.title {
+  font-size: 42px;
+  color: cyan;
+  background-color: cadetblue;
+}
+
+.content {
+  font-size: 32px;
+  color: plum;
+  background-color: chocolate;
+}
+
+.section {
+  border: none;
+}
