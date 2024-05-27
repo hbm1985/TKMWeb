@@ -104,6 +104,44 @@
     reducer做的事情就是将传入的state和action结合起来，生成一个新的state，并返回
  */
 
+/*
+  Redux的三大原则
+
+  单一数据源：
+    整个应用程序的state被存储在一棵object tree中，并且这个object tree只存储在一个store中
+    Redux并没有强制让我们不能创建多个store，但是那样做并不利于数据的维护
+    单一的数据源可以让整个应用程序的state变得方便维护、跟踪、修改
+
+  State是只读的：
+    唯一修改State的方法一定是触发action，不要试图在其他地方通过任何的方式来修改state
+    这样就确保了View或网络请求都不能直接修改state，它们只能通过action来描述自己想要如何修改state
+    这样可以保证所有的修改都被集中化处理，并且按照严格的顺序来执行，所以不需要担心race condition（竞态）的问题
+
+  使用纯函数来执行修改：
+    通过reducer将旧state和action联系在一起，并且返回一个新的state
+    随着应用程序的复杂度增加，我们可以将reducer拆分成多个小的reducers，分别操作不同state tree的一部分
+    但是所有的reducer都应该是纯函数，不能产生任何的副作用
+ */
+
+/*
+  Redux结构划分
+
+  如果我们将所有的逻辑代码写到一起，那么当Redux变得复杂时，代码就难以维护
+    接下来，我会对代码进行拆分，将store、reducer、action、constants拆分成一个个文件
+    创建store/index.js文件
+    创建store/reducer.js文件
+    创建store/actionCreators.js文件
+    创建store/constants.js文件
+
+  注意：node中对ES6模块化的支持
+    从node 13.2.0开始，node才对ES6模块化提供了支持
+    node 13.2.0之前，需要进行如下操作：
+      在package.json中添加属性："type": "module"
+      在执行命令中添加如下选项：node -experimental-modules src/index.js
+    在node 13.2.0之后，只需要进行如下操作：
+      在package.json中添加属性："type": "module"
+ */
+
 const { createStore } = require("redux")
 const reducer = require("./reducer")
 
