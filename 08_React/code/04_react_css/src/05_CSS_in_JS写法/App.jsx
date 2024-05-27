@@ -32,21 +32,54 @@
     npm install styled-components 
  */
 
+/*
+  styled的基本使用
+
+  styled-components的本质是通过函数的调用，最终创建出一个组件：
+    这个组件会被自动添加上一个不重复的class
+    styled-components会给该class添加相关的样式
+
+  另外，它支持类似CSS预处理器一样的样式嵌套：
+    支持直接子代选择器或后代选择器，并且直接编写样式
+    可以通过&符号获取当前元素
+    直接伪类选择器、伪元素等
+ */
+
 import React, { PureComponent } from "react"
-import { AppWrapper } from "./style"
+import { AppWrapper, SectionWrawpper, FooterWrapper } from "./style"
 
 export default class App extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      // paddingLeft: 10,
+      color: "orange",
+      fontSize: 30,
+      fontStyle: "italic"
+    }
+  }
+
+  changeColor() {
+    this.setState(state => {
+      return {
+        color: state.color === "orange" ? "pink" : "orange"
+      }
+    })
+  }
+
   render() {
     return (
       <AppWrapper>
-        <div className="section">
+        <SectionWrawpper {...this.state}>
           <h2 className="title">我是标题</h2>
           <h2 className="content">我是内容，哈哈哈</h2>
-        </div>
-        <div className="footer">
+          <button onClick={() => this.changeColor()}>修改颜色</button>
+        </SectionWrawpper>
+        <FooterWrapper>
           <p>免责声明</p>
           <p>版权声明</p>
-        </div>
+        </FooterWrapper>
       </AppWrapper>
     )
   }

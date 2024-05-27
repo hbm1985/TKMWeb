@@ -1,0 +1,5 @@
+export const primaryColor = "#ff8800"
+export const secondaryColor = "#00ff88"
+export const smallSize = "12px"
+export const middleSize = "14px"
+export const largeSize = "18px"
