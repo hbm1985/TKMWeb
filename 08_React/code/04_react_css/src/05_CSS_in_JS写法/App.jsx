@@ -47,6 +47,7 @@
 
 import React, { PureComponent } from "react"
 import { AppWrapper, SectionWrawpper, FooterWrapper } from "./style"
+import Home from "./components/Home"
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -76,6 +77,7 @@ export default class App extends PureComponent {
           <h2 className="content">我是内容，哈哈哈</h2>
           <button onClick={() => this.changeColor()}>修改颜色</button>
         </SectionWrawpper>
+        <Home />
         <FooterWrapper>
           <p>免责声明</p>
           <p>版权声明</p>

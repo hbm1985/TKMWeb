@@ -33,6 +33,7 @@
 
 import React from "react"
 import ReactDOM from "react-dom/client"
+import { ThemeProvider } from "styled-components"
 // import App from "./01_内联样式的CSS/App"
 // import App from "./02_普通的CSS写法/App"
 // import App from "./03_CSS_Modules/App"
@@ -42,6 +43,8 @@ import App from "./05_CSS_in_JS写法/App"
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={{ color: "purple", size: "50px" }}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 )
