@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react"
-import { HomeWrapper } from "./style"
+import { HomeWrapper, TKMButtonWrapper } from "./style"
 
 export default class Home extends PureComponent {
   render() {
@@ -7,6 +7,7 @@ export default class Home extends PureComponent {
       <HomeWrapper>
         <div className="top">
           <div className="banner">Banner</div>
+          <TKMButtonWrapper>按钮</TKMButtonWrapper>
         </div>
         <div className="bottom">
           <h2 className="title">商品列表</h2>
