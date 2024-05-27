@@ -4,6 +4,10 @@
   CSS Modules并不是React特有的解决方案，而是所有使用了类似于webpack配置的环境下都可以使用的
     如果在其他项目中使用它，那么我们需要自己来进行配置，比如配置webpack.config.js中的modules为true等
 
+  React的脚手架已经内置了CSS Modules的配置：
+    .css/.less/.scss等样式文件都需要修改成.module.css/.module.less/.module.scss
+    之后就可以引用并且进行使用了
+
   CSS Modules确实解决了局部作用域的问题，也是很多人喜欢在React中使用的一种方案
 
   但是这种方案也有自己的缺陷：
