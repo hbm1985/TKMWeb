@@ -24,4 +24,5 @@ function reducer(state = initialState, action) {
   }
 }
 
+//  一般一个文件只有一个reducer
 module.exports = reducer
