@@ -1,3 +1,11 @@
+/*
+  优化总结：
+  1.将派发的action生成过程放在actionCreators中
+  2.将定义的所有actionCreators的函数，放到一个独立的文件：actionCreators.js中
+  3.actionCreators和reducer函数中使用的字符串（action的type）是一致的，所以将这些字符串抽取成常量，放在constant.js中
+  4.将reducer和默认值（initialState）放在独立的reducer.js中
+ */
+
 const store = require("./store")
 const { changeNameAction, changeAgeAction } = require("./store/actionCreators")
 
