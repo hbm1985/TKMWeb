@@ -31,6 +31,7 @@ export const AppWrapper = styled.div`
 //  2.子元素单独抽取为样式组件
 //  3.样式组件可以接收外部传递的props
 //  4.通过attrs给标签模板字符串中提供默认的属性
+//  5.从一个单独的文件中引入变量
 export const SectionWrawpper = styled.div.attrs((props) => ({
   defaultColor: props.color || "blue",
   paddingLeft: props.paddingLeft || 20
