@@ -1,26 +1,26 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
-import axios from "axios"
-import { createChangeBannersAction, createChangeRecommendsAction } from "../../store/actionCreators"
+import { createFetchHomeDataAction, createClearHomeDataAction } from "../../store/actionCreators"
 
 class Category extends PureComponent {
 
   fetchData() {
-    axios.get("http://123.207.32.32:8000/home/multidata").then(res => {
-      const data = res.data.data
-      const banners = data.banner.list
-      const recommends = data.recommend.list
+    // axios.get("http://123.207.32.32:8000/home/multidata").then(res => {
+    //   const data = res.data.data
+    //   const banners = data.banner.list
+    //   const recommends = data.recommend.list
 
-      const { changeBanners, changeRecommends } = this.props
-      changeBanners(banners)
-      changeRecommends(recommends)
-    })
+    //   const { changeBanners, changeRecommends } = this.props
+    //   changeBanners(banners)
+    //   changeRecommends(recommends)
+    // })
+    const { fetchHomeData } = this.props
+    fetchHomeData()
   }
 
   clearData() {
-    const { changeBanners, changeRecommends } = this.props
-    changeBanners([])
-    changeRecommends([])
+    const { clearHomeData } = this.props
+    clearHomeData()
   }
 
   render() {
@@ -35,11 +35,11 @@ class Category extends PureComponent {
 }
 
 const mapDispatchToProps = dispatch => ({
-  changeBanners: (banners) => {
-    dispatch(createChangeBannersAction(banners))
+  fetchHomeData: () => {
+    dispatch(createFetchHomeDataAction())
   },
-  changeRecommends: (recommends) => {
-    dispatch(createChangeRecommendsAction(recommends))
+  clearHomeData: () => {
+    dispatch(createClearHomeDataAction())
   }
 })
 

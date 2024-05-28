@@ -16,6 +16,8 @@ export default function reducer(prevState = initialState, action) {
       return { ...prevState, banners: action.data }
     case actionTypes.CHANGE_RECOMMENDS:
       return { ...prevState, recommends: action.data }
+    case actionTypes.CLEAR_HOME_DATA:
+      return { ...prevState, banners: [], recommends: [] }
     default:
       return prevState
   }
