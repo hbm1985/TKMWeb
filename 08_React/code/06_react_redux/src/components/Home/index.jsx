@@ -1,34 +1,16 @@
 import React, { PureComponent } from "react"
-import store from "../../store"
+import { connect } from "react-redux"
 import { createIncrementAction } from "../../store/actionCreators"
 
-export default class Home extends PureComponent {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      count: store.getState().count
-    }
-  }
+class Home extends PureComponent {
 
   increment(number) {
-    const action = createIncrementAction(number)
-    store.dispatch(action)
-  }
-
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      const state = store.getState()
-      this.setState({ count: state.count })
-    })
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe()
+    const { increment } = this.props
+    increment(number)
   }
 
   render() {
-    const { count } = this.state
+    const { count } = this.props
 
     return (
       <div>
@@ -42,3 +24,15 @@ export default class Home extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  count: state.count
+})
+
+const mapDispatchToProps = dispatch => ({
+  increment: number => {
+    dispatch(createIncrementAction(number))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

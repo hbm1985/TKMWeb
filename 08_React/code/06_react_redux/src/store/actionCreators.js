@@ -13,3 +13,17 @@ export const createDecrermentAction = (number) => {
     data: number
   }
 }
+
+export const createChangeBannersAction = (banners) => {
+  return {
+    type: actionTypes.CHANGE_BANNERS,
+    data: banners
+  }
+}
+
+export const createChangeRecommendsAction = (recommends) => {
+  return {
+    type: actionTypes.CHANGE_RECOMMENDS,
+    data: recommends
+  }
+}

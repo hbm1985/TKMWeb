@@ -1,33 +1,16 @@
 import React, { PureComponent } from "react"
-import store from "../../store"
+import { connect } from "react-redux"
 import { createDecrermentAction } from "../../store/actionCreators"
 
-export default class Profile extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      count: store.getState().count
-    }
-  }
+class Profile extends PureComponent {
 
   decrement(number) {
-    const action = createDecrermentAction(number)
-    store.dispatch(action)
-  }
-
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      const state = store.getState()
-      this.setState({ count: state.count })
-    })
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe()
+    const { decrement } = this.props
+    decrement(number)
   }
 
   render() {
-    const { count } = this.state
+    const { count } = this.props
 
     return (
       <div>
@@ -41,3 +24,15 @@ export default class Profile extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  count: state.count
+})
+
+const mapDispatchToProps = dispatch => ({
+  decrement: (number) => {
+    dispatch(createDecrermentAction(number))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

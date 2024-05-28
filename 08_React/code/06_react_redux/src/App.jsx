@@ -4,6 +4,7 @@ import store from "./store"
 import Home from "./components/Home"
 import Profile from "./components/Profile"
 import About from "./components/About"
+import Category from "./components/Category"
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class App extends PureComponent {
           <Home />
           <Profile />
           <About />
+          <Category />
         </div>
       </div>
     )
