@@ -5,6 +5,7 @@ import Home from "./components/Home"
 import Profile from "./components/Profile"
 import About from "./components/About"
 import Category from "./components/Category"
+import User from "./components/User"
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class App extends PureComponent {
           <Profile />
           <About />
           <Category />
+          <User />
         </div>
       </div>
     )

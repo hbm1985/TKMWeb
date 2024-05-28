@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
-import { createFetchHomeDataAction, createClearHomeDataAction } from "../../store/actionCreators"
+import { createFetchHomeDataAction, createClearHomeDataAction } from "../../store/home/actionCreators"
 
 class Category extends PureComponent {
 

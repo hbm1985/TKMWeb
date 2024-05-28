@@ -1,0 +1,2 @@
+export const CHANGE_NAME = "CHANGE_NAME"
+export const INCREMENT_AGE = "INCREMENT_AGE"

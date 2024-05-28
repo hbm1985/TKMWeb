@@ -54,7 +54,7 @@
   2.在创建store时，传入middleware的enhance函数
     通过applyMiddleware来结合多个Middleware，返回一个enhancer
     将enhancer作为第二个参数传入到createStore中
-    
+
       const enhancer = applyMiddleware(thunk)
       const store = createStore(reducer, enhancer)
 
@@ -73,6 +73,20 @@
           dispatch(createChangeRecommendsAction(recommends))
         }
       }
+ */
+
+/*
+  redux-devtools
+
+  我们之前讲过，redux可以方便的让我们对状态进行跟踪和测试，那么如何做到的呢？
+    redux官网为我们提供了redux-devtools的工具
+    利用这个工具，我们可以知道每次状态时如何被修改的，修改前后的状态变化等等
+
+  安装该工具需要两步：
+    第一步：在对应的浏览器中安装相关的插件（比如Chrome浏览器扩展商店找那个搜索Redux DevTools即可）
+    第二步：在redux中集成devtools的中间件
+
+    https://github.com/zalmoxisus/redux-devtools-extension
  */
 
 import React from "react"

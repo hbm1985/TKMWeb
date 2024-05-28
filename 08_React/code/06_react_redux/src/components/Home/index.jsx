@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
-import { createIncrementAction } from "../../store/actionCreators"
+import { createIncrementAction } from "../../store/counter/actionCreators"
 
 class Home extends PureComponent {
 
@@ -10,11 +10,13 @@ class Home extends PureComponent {
   }
 
   render() {
-    const { count } = this.props
+    const { count, name, age } = this.props
 
     return (
       <div>
         <h2>Home counter: {count}</h2>
+        <h2>姓名：{name}</h2>
+        <h2>年龄：{age}</h2>
         <div>
           <button onClick={() => this.increment(1)}>+1</button>
           <button onClick={() => this.increment(5)}>+5</button>
@@ -26,7 +28,9 @@ class Home extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  count: state.count
+  count: state.counter.count,
+  name: state.user.name,
+  age: state.user.age
 })
 
 const mapDispatchToProps = dispatch => ({

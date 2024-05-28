@@ -1,11 +1,7 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
-import {
-  createIncrementAction,
-  createDecrermentAction,
-  createChangeBannersAction,
-  createChangeRecommendsAction
-} from "../../store/actionCreators"
+import { createIncrementAction, createDecrermentAction } from "../../store/counter/actionCreators"
+import { createChangeBannersAction, createChangeRecommendsAction } from "../../store/home/actionCreators"
 
 //  定义UI组件
 class About extends PureComponent {
@@ -57,9 +53,9 @@ class About extends PureComponent {
 
 //  将state映射到props
 const mapStateToProps = state => ({
-  count: state.count,
-  banners: state.banners,
-  recommends: state.recommends
+  count: state.counter.count,
+  banners: state.home.banners,
+  recommends: state.home.recommends
 })
 
 //  将dispatch映射到props
