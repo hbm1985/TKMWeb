@@ -3,6 +3,7 @@ import "./style.css"
 import store from "./store"
 import Home from "./components/Home"
 import Profile from "./components/Profile"
+import About from "./components/About"
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -32,6 +33,7 @@ export default class App extends PureComponent {
         <div className="container">
           <Home />
           <Profile />
+          <About />
         </div>
       </div>
     )
