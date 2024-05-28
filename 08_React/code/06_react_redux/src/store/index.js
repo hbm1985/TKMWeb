@@ -8,6 +8,19 @@ import userReducer from "./user"
 //  注意：仅在开发环境时开启，生产环境不要开启
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true }) || compose;
 
+//  combineReducers的原理
+//  回想一个普通的reducer函数接收的参数：prevState、action
+function myReducer(state = {}, action) {
+
+  //  返回一个对象，作为store的state
+  //  根据key（counter、home、user），决定使用哪个reducer
+  return {
+    counter: counterReducer(state.count, action),
+    home: homeReducer(state.home, action),
+    user: userReducer(state.user, action),
+  }
+}
+
 //  合并多个reducer
 //  将我们传入的reducers合并到一个对象中，最终返回一个combination的函数
 //  在执行combination函数的过程中，它会通过判断前后返回的数据是否相同来决定返回之前的state还是新的state
