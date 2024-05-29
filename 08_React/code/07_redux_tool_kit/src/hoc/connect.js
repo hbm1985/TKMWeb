@@ -7,9 +7,10 @@ import store from "../store"
 export function connect(mapStateToProps, mapDispatchToProps) {
 
   //  返回一个函数（高阶组件）
-  //  这个函数需要接收UI组件作为参数 
+  //  这个函数需要接收UI组件作为参数
   return function (WrapperComponent) {
 
+    //  当store中的数据发生变化，需要重新执行自身的render函数，从而触发UI组件的重新渲染
     class NewComponent extends PureComponent {
       constructor(props) {
         super(props)
