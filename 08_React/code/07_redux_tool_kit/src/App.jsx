@@ -1,13 +1,17 @@
 import React, { PureComponent } from "react"
+import { connect } from "react-redux"
 import Home from "./components/Home"
 import Profile from "./components/Profile"
 import "./style.css"
 
-export default class App extends PureComponent {
+class App extends PureComponent {
+
   render() {
+    const { count } = this.props
+
     return (
       <div>
-        <h2>App counter: 0</h2>
+        <h2>App counter: {count}</h2>
         <div className="container">
           <Home />
           <Profile />
@@ -16,3 +20,9 @@ export default class App extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  count: state.counter.count
+})
+
+export default connect(mapStateToProps)(App)
