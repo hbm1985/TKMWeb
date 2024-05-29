@@ -49,6 +49,21 @@
   createSlice：返回值是一个对象，包含所有的actions
  */
 
+/*
+  Redux Toolkit的异步操作
+
+  在之前的开发中，我们通过redux-thunk中间件让dispatch可以进行异步操作
+
+  Redux Toolkit默认已经给我们集成了Thunk相关的功能：createAsyncThunk
+
+  当createAsyncThunk创建出来的action被dispatch时，会存在三种状态
+    pending：action被发出，但是还没有最终的结果
+    fulfilled：获取到最终的结果
+    rejected：执行过程中有错误或者抛出了异常
+
+  我们可以在createSlice的extraReducer中监听这些结果
+ */
+
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { Provider } from "react-redux"
