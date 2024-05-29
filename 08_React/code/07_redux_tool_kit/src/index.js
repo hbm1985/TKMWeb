@@ -62,6 +62,16 @@
     rejected：执行过程中有错误或者抛出了异常
 
   我们可以在createSlice的extraReducer中监听这些结果
+    新版的RTK已经不支持createSlice.extraReducers这种写法了，会报错
+    The object notation for `createSlice.extraReducers` has been removed. Please use the 'builder callback'
+    https://redux-toolkit.js.org/api/createSlice
+ */
+
+/*
+  extraReducer的另外一种写法
+
+  extraReducer还可以传入一个函数，函数接收一个builder参数
+    我们可以向builder中添加case来监听异步操作的结果
  */
 
 import React from "react"

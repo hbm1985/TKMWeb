@@ -44,7 +44,7 @@ class Profile extends PureComponent {
         <ul>
           {
             recommends.map(recommend => {
-              return <li key={recommend.acm}>{recommends.title}</li>
+              return <li key={recommend.acm}>{recommend.title}</li>
             })
           }
         </ul>
