@@ -2,6 +2,7 @@ import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 import Home from "./components/Home"
 import Profile from "./components/Profile"
+import About from "./components/About"
 import "./style.css"
 
 class App extends PureComponent {
@@ -15,6 +16,7 @@ class App extends PureComponent {
         <div className="container">
           <Home />
           <Profile />
+          <About />
         </div>
       </div>
     )
