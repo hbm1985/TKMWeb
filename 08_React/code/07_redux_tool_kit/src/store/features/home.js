@@ -31,7 +31,9 @@ const homeSlice = createHomeSlice({
       state.recommends = payload
     },
     getHomeData: create.asyncThunk(
-      async () => {
+      //  这个函数可以接收从外部传递的参数（dispatch action时，action的参数）
+      async (params) => {
+        console.log("getHomeData params:", params)
         const res = await axios.get("http://123.207.32.32:8000/home/multidata")
         const data = res.data.data
         return data
@@ -51,6 +53,7 @@ const homeSlice = createHomeSlice({
       }
     )
   }),
+  //  新版的RTK已经不再支持这种写法，会报错
   //  The object notation for `createSlice.extraReducers` has been removed. Please use the 'builder callback'
   //  https://redux-toolkit.js.org/api/createSlice
   // extraReducers: {

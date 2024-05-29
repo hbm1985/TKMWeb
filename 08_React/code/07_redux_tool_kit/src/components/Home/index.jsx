@@ -57,7 +57,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(increment(number))
   },
   getHomeData() {
-    dispatch(getHomeData())
+    dispatch(getHomeData({ name: "Bread", age: 24 }))
   }
 })
 
