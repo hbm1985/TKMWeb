@@ -76,6 +76,12 @@
 
 ### 1.8.1 spread attributes
 
+```jsx
+  render() {
+    return <Home {...this.state} {...this.props} />
+  }
+```
+
 ## 1.8.2 Context基本使用
 
 + 创建context：React.createContext(defaultValue)

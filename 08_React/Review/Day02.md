@@ -26,6 +26,8 @@
 
 + 模拟Vue的v-show效果
 
+  + display: none
+
 ## 1.3 JSX列表渲染
 
 + map高阶函数
