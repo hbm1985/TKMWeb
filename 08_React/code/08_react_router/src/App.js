@@ -69,16 +69,31 @@
  */
 
 import React, { PureComponent } from "react"
-import { Routes, Route, NavLink, Link, Navigate } from "react-router-dom"
+import { Routes, Route, NavLink, Link, Navigate, useNavigate } from "react-router-dom"
 import "./style.css"
+import Navigator from "./hoc/Navigator"
 import Home from "./pages/Home"
 import Recommend from "./pages/Home/Recommend"
 import Ranking from "./pages/Home/Ranking"
 import About from "./pages/About"
 import Login from "./pages/Login"
 import NotFound from "./pages/NotFound"
+import Category from "./pages/Category"
+import Order from "./pages/Order"
 
-export default class App extends PureComponent {
+class App extends PureComponent {
+
+  navigateTo(path) {
+    //  useNavigate只能用于函数组件，不能用于类组件
+    //  React hooks，是专门为了函数组件而诞生的
+    //  React Hook "useNavigate" cannot be called in a class component.
+    // const navigate = useNavigate()
+    // navigate(path)
+
+    const { navigate } = this.props
+    navigate(path)
+  }
+
   render() {
     return (
       <div className="app">
@@ -90,6 +105,8 @@ export default class App extends PureComponent {
               <Link to="/home">首页</Link>
               <Link to="/about">关于</Link>
               <Link to="/login">登录</Link>
+              <button onClick={() => this.navigateTo("/category")}>分类</button>
+              <span onClick={() => this.navigateTo("/order")}>订单</span>
             </div>
             {/* 默认情况下，通过.active选择器，控制NavLink的选中状态 */}
             <div>
@@ -122,6 +139,8 @@ export default class App extends PureComponent {
           </Route>
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/order" element={<Order />} />
           {/* 兜底的路由 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -133,3 +152,7 @@ export default class App extends PureComponent {
     )
   }
 }
+
+//  通过高阶组件，将navigate传给类组件使用
+//  高阶组件内部封装了函数组件，那么可以在该函数组件内部使用useNavigate
+export default Navigator(App)
