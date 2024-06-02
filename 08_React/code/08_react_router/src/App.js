@@ -22,10 +22,27 @@
     to属性：Link中最终套的属性，用于设置跳转到的路径
  */
 
+/*
+  NavLink的使用
+
+  需求：路径选中时，对应的a元素变为红色
+
+  这个时候，我们要使用NavLink组件来替代Link组件
+    style：传入函数，函数接收一个对象，包含isActive的属性
+    className：传入函数，函数接收一个对象，包含isActive的属性
+
+  默认的activeClassName：
+    事实上在默认匹配成功时，NavLink就会添加上一个动态的class：active
+    所以我们也可以直接编写样式
+
+  当然，如果你担心这个class在其他地方被使用了，出现样式的层叠，也可以自定义class
+ */
+
 import React, { PureComponent } from "react"
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route, NavLink, Link } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
+import "./style.css"
 
 export default class App extends PureComponent {
   render() {
@@ -34,8 +51,26 @@ export default class App extends PureComponent {
         <div className="header">
           <h2>Header</h2>
           <div className="nav">
-            <Link to="/home">首页</Link>
-            <Link to="/about">关于</Link>
+            {/* 区别于NavLink，Link不能添加样式（普通的样式和选中的样式） */}
+            <div>
+              <Link to="/home">首页</Link>
+              <Link to="/about">关于</Link>
+            </div>
+            {/* 默认情况下，通过.active选择器，控制NavLink的选中状态 */}
+            <div>
+              <NavLink to="/home">首页</NavLink>
+              <NavLink to="/about">关于</NavLink>
+            </div>
+            {/* 通过style函数，控制NavLink的选中状态 */}
+            <div>
+              <NavLink to="/home" style={({ isActive }) => ({ color: isActive ? "cyan" : "black", fontWeight: isActive ? 700 : 400 })}>首页</NavLink>
+              <NavLink to="/about" style={({ isActive }) => ({ color: isActive ? "cyan" : "black", fontWeight: isActive ? 700 : 400 })}>关于</NavLink>
+            </div>
+            {/* 通过className函数，控制NavLink的选中状态 */}
+            <div>
+              <NavLink to="/home" className={({ isActive }) => isActive ? "link-active" : ""}>首页</NavLink>
+              <NavLink to="/about" className={({ isActive }) => isActive ? "link-active" : ""}>关于</NavLink>
+            </div>
           </div>
           <hr />
         </div>
