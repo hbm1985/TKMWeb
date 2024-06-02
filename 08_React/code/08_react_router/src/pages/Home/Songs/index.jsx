@@ -1,4 +1,6 @@
 import React, { PureComponent } from "react"
+import { Outlet } from "react-router-dom"
+import Menu from "./Menu"
 
 export default class Songs extends PureComponent {
   render() {
@@ -13,6 +15,8 @@ export default class Songs extends PureComponent {
           <li>《失眠的夜》</li>
           <li>《有何不可》</li>
         </ul>
+        <Menu />
+        <Outlet />
       </div>
     )
   }

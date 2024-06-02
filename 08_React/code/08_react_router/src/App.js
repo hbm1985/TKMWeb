@@ -92,6 +92,26 @@
   类组件需要自行封装高阶组件
  */
 
+/*
+  路由参数传递
+
+  传递参数有两种方式：
+    动态路由的方式
+    search传递参数
+
+  动态路由的改变指的是路由中的路径并不会固定
+    比如/detail的path对应一个Detail组件
+    如果我们将path在Route匹配时写成/detail/:id，那么/detail/abc、/detail/123都可以匹配到该Route，并且进行显示
+    这个匹配规则，我们就称为动态路由
+    通常情况下，使用动态路由可以为路由传递参数
+
+  search传递参数：
+    /user?name=Bread&age=24
+    
+    const [searchParams] = useSearchParams()
+    const query = Object.fromEntries(searchParams)
+ */
+
 import React, { PureComponent } from "react"
 import { Routes, Route, NavLink, Link, Navigate, useNavigate } from "react-router-dom"
 import "./style.css"
@@ -105,6 +125,8 @@ import Login from "./pages/Login"
 import NotFound from "./pages/NotFound"
 import Category from "./pages/Category"
 import Order from "./pages/Order"
+import Detail from "./pages/Home/Songs/Detail"
+import User from "./pages/User"
 
 class App extends PureComponent {
 
@@ -132,6 +154,7 @@ class App extends PureComponent {
               <Link to="/login">登录</Link>
               <button onClick={() => this.navigateTo("/category")}>分类</button>
               <span onClick={() => this.navigateTo("/order")}>订单</span>
+              <Link to="/user?name=Bread&age=24">用户</Link>
             </div>
             {/* 默认情况下，通过.active选择器，控制NavLink的选中状态 */}
             <div>
@@ -161,12 +184,15 @@ class App extends PureComponent {
             <Route path="/home" element={<Navigate to="/home/recommend" />} />
             <Route path="/home/recommend" element={<Recommend />} />
             <Route path="/home/ranking" element={<Ranking />} />
-            <Route path="/home/songs" element={<Songs />} />
+            <Route path="/home/songs" element={<Songs />}>
+              <Route path="/home/songs/detail/:id" element={<Detail />} />
+            </Route>
           </Route>
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/category" element={<Category />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/user" element={<User />} />
           {/* 兜底的路由 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
