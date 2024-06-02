@@ -56,10 +56,24 @@
     配置对应的Route，并且设置path为*，将这个Route放在末尾即可
  */
 
+/*
+  路由的嵌套
+
+  在开发中，路由之间是存在嵌套关系的
+
+  这里我们假设Home页面中有两个页面内容
+    推荐列表和排行榜列表
+    点击不同的链接可以跳转到不同的地方，显示不同的内容
+
+  <Outlet />组件用于在父路由组件中作为子路由的占位组件
+ */
+
 import React, { PureComponent } from "react"
 import { Routes, Route, NavLink, Link, Navigate } from "react-router-dom"
 import "./style.css"
 import Home from "./pages/Home"
+import Recommend from "./pages/Home/Recommend"
+import Ranking from "./pages/Home/Ranking"
 import About from "./pages/About"
 import Login from "./pages/Login"
 import NotFound from "./pages/NotFound"
@@ -101,7 +115,11 @@ export default class App extends PureComponent {
 
           {/* 使用Navigate，重定向首页 */}
           <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home />}>
+            <Route path="/home" element={<Navigate to="/home/recommend" />} />
+            <Route path="/home/recommend" element={<Recommend />} />
+            <Route path="/home/ranking" element={<Ranking />} />
+          </Route>
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           {/* 兜底的路由 */}
