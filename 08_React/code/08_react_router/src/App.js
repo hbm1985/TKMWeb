@@ -75,6 +75,7 @@ import WithRouter from "./hoc/WithRouter"
 import Home from "./pages/Home"
 import Recommend from "./pages/Home/Recommend"
 import Ranking from "./pages/Home/Ranking"
+import Songs from "./pages/Home/Songs"
 import About from "./pages/About"
 import Login from "./pages/Login"
 import NotFound from "./pages/NotFound"
@@ -90,7 +91,7 @@ class App extends PureComponent {
     // const navigate = useNavigate()
     // navigate(path)
 
-    const { navigate } = this.props
+    const { navigate } = this.props.router
     navigate(path)
   }
 
@@ -136,6 +137,7 @@ class App extends PureComponent {
             <Route path="/home" element={<Navigate to="/home/recommend" />} />
             <Route path="/home/recommend" element={<Recommend />} />
             <Route path="/home/ranking" element={<Ranking />} />
+            <Route path="/home/songs" element={<Songs />} />
           </Route>
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
