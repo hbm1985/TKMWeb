@@ -113,7 +113,7 @@
  */
 
 import React, { PureComponent } from "react"
-import { Routes, Route, NavLink, Link, Navigate, useNavigate } from "react-router-dom"
+import { Routes, Route, NavLink, Link, Navigate } from "react-router-dom"
 import "./style.css"
 import WithRouter from "./hoc/WithRouter"
 import Home from "./pages/Home"

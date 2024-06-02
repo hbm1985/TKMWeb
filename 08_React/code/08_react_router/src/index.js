@@ -98,16 +98,20 @@
     npm install react-router-dom
  */
 
-import React from "react"
+import React, { Suspense } from "react"
 import ReactDOM from "react-dom/client"
 import { HashRouter } from "react-router-dom"
-import App from "./App"
+// import App from "./App"
+import App from "./App2"
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <Suspense fallback={<div>加载中...</div>}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Suspense>
   </React.StrictMode>
 )
