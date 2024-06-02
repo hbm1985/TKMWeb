@@ -71,7 +71,7 @@
 import React, { PureComponent } from "react"
 import { Routes, Route, NavLink, Link, Navigate, useNavigate } from "react-router-dom"
 import "./style.css"
-import Navigator from "./hoc/Navigator"
+import WithRouter from "./hoc/WithRouter"
 import Home from "./pages/Home"
 import Recommend from "./pages/Home/Recommend"
 import Ranking from "./pages/Home/Ranking"
@@ -155,4 +155,4 @@ class App extends PureComponent {
 
 //  通过高阶组件，将navigate传给类组件使用
 //  高阶组件内部封装了函数组件，那么可以在该函数组件内部使用useNavigate
-export default Navigator(App)
+export default WithRouter(App)
