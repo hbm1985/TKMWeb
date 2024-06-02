@@ -89,6 +89,29 @@
     https://github.com/zalmoxisus/redux-devtools-extension
  */
 
+/*
+  React中的state如何管理
+
+  我们学习了Redux用来管理我们的应用状态，并且非常好用
+
+  目前我们已经主要学习了三种状态管理方式：
+    方式一：组件中自己的state管理
+    方式二：Context数据的共享状态
+    方式三：Redux管理应用状态
+
+  在开发中如何选择呢？
+    首先，这个没有一个标准的答案
+    某些用户，选择将所有的状态放到redux中进行管理，因为这样方便追踪和共享
+    有些用户，选择将某些组件自己的状态放到组件内部进行管理
+    有些用户，将类似于主题，用户信息等数据放到Contxt中进行共享和管理
+    作为一个开发者，到底选择怎样的状态管理方式，是你的工作之一，可以选择一个最好的平衡方式
+
+  目前项目中采用的state管理方案：
+    UI相关的组件内部可以维护的状态，在组件内部自己维护
+    大部分需要共享的状态，都交给redux来管理和维护
+    从服务器请求的数据（包括请求的操作），交给redux来维护
+ */
+
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { Provider } from "react-redux"
