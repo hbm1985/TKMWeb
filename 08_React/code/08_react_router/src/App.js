@@ -1,3 +1,13 @@
+/*
+  Router的基本使用
+
+  react-router最主要的API是给我们提供的一些组件：
+
+  BrowserRouter和HashRouter
+    Router中包含了对路径改变的监听，并且会将相应的路径传递给子组件
+    BrowserRouter使用history模式
+    HashRouter使用hash模式
+ */
 
 /*
   路由的映射配置
@@ -66,6 +76,20 @@
     点击不同的链接可以跳转到不同的地方，显示不同的内容
 
   <Outlet />组件用于在父路由组件中作为子路由的占位组件
+ */
+
+/*
+  手动路由的跳转
+
+  目前我们实现的跳转主要是通过Link或者NavLink进行跳转的，实际上我们也可以通过JavaScript代码进行跳转
+    我们知道Navigate组件时可以进行路由的跳转的，但是依然是组件的方式
+    日过我们希望通过JavaScript代码逻辑进行跳转（比如点击了一个button），那么久需要获取到navigate对象
+
+  在Router6.x版本之后，代码类的API都迁移到了hooks的写法：
+    如果我们希望进行代码跳转，需要通过useNavigate的Hook获取到navigate对象进行操作
+    那么如果是一个函数组件，我们可以直接调用，但是如果是一个类组件呢？
+
+  类组件需要自行封装高阶组件
  */
 
 import React, { PureComponent } from "react"
