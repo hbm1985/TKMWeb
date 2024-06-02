@@ -38,11 +38,31 @@
   当然，如果你担心这个class在其他地方被使用了，出现样式的层叠，也可以自定义class
  */
 
+/*
+  Navigate导航
+
+  Navigate用于路由的重定向，当这个组件出现时，就会执行跳转到对应的to路径中
+ */
+
+/*
+  NotFound页面配置
+
+  如果用户随意输入一个地址，该地址无法匹配，那么在路由的位置将什么内容都不显示
+
+  很多时候，我们希望在这种情况下，让用户看到一个Not Found的页面
+
+  这个过程很简单：
+    开发一个Not Found页面
+    配置对应的Route，并且设置path为*，将这个Route放在末尾即可
+ */
+
 import React, { PureComponent } from "react"
-import { Routes, Route, NavLink, Link } from "react-router-dom"
+import { Routes, Route, NavLink, Link, Navigate } from "react-router-dom"
+import "./style.css"
 import Home from "./pages/Home"
 import About from "./pages/About"
-import "./style.css"
+import Login from "./pages/Login"
+import NotFound from "./pages/NotFound"
 
 export default class App extends PureComponent {
   render() {
@@ -55,21 +75,22 @@ export default class App extends PureComponent {
             <div>
               <Link to="/home">首页</Link>
               <Link to="/about">关于</Link>
+              <Link to="/login">登录</Link>
             </div>
             {/* 默认情况下，通过.active选择器，控制NavLink的选中状态 */}
             <div>
-              <NavLink to="/home">首页</NavLink>
-              <NavLink to="/about">关于</NavLink>
+              {/* <NavLink to="/home">首页</NavLink> */}
+              {/* <NavLink to="/about">关于</NavLink> */}
             </div>
             {/* 通过style函数，控制NavLink的选中状态 */}
             <div>
-              <NavLink to="/home" style={({ isActive }) => ({ color: isActive ? "cyan" : "black", fontWeight: isActive ? 700 : 400 })}>首页</NavLink>
-              <NavLink to="/about" style={({ isActive }) => ({ color: isActive ? "cyan" : "black", fontWeight: isActive ? 700 : 400 })}>关于</NavLink>
+              {/* <NavLink to="/home" style={({ isActive }) => ({ color: isActive ? "cyan" : "black", fontWeight: isActive ? 700 : 400 })}>首页</NavLink> */}
+              {/* <NavLink to="/about" style={({ isActive }) => ({ color: isActive ? "cyan" : "black", fontWeight: isActive ? 700 : 400 })}>关于</NavLink> */}
             </div>
             {/* 通过className函数，控制NavLink的选中状态 */}
             <div>
-              <NavLink to="/home" className={({ isActive }) => isActive ? "link-active" : ""}>首页</NavLink>
-              <NavLink to="/about" className={({ isActive }) => isActive ? "link-active" : ""}>关于</NavLink>
+              {/* <NavLink to="/home" className={({ isActive }) => isActive ? "link-active" : ""}>首页</NavLink> */}
+              {/* <NavLink to="/about" className={({ isActive }) => isActive ? "link-active" : ""}>关于</NavLink> */}
             </div>
           </div>
           <hr />
@@ -77,8 +98,14 @@ export default class App extends PureComponent {
         <Routes>
           {/* router5.x的映射关系：path => component */}
           {/* router6.x的映射关系：path => element */}
+
+          {/* 使用Navigate，重定向首页 */}
+          <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          {/* 兜底的路由 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <div className="footer">
           <hr />
