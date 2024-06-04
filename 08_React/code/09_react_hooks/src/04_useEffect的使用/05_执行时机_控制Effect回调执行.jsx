@@ -14,7 +14,7 @@
     那么这里的两个回调函数分别对应的就是componentDidMount和ucomponentWillUnmount
  */
 
-import React, { memo, useEffect, useState } from "react"
+import React, { PureComponent, memo, useEffect, useState } from "react"
 
 const App = memo(() => {
 
@@ -28,8 +28,9 @@ const App = memo(() => {
   useEffect(() => {
     console.log("开启定时器")
     let timerId = setInterval(() => {
+      // setCounter(counter + 1)
       //  setCounter的另一种写法
-      setCounter(prevCounter => prevCounter + 1)
+      // setCounter(prevCounter => prevCounter + 1)
     }, 1000)
     return () => {
       console.log("取消定时器")
@@ -68,5 +69,36 @@ const App = memo(() => {
     </div>
   )
 })
+
+class AppClass extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      counter: 100
+    }
+  }
+
+  componentDidMount() {
+    this.timerId = setInterval(() => {
+      const { counter } = this.state
+      this.setState({ counter: counter + 1 })
+    }, 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId)
+    this.timerId = undefined
+  }
+
+  render() {
+    const { counter } = this.state
+
+    return (
+      <div>
+        <h2>AppClass: {counter}</h2>
+      </div>
+    )
+  }
+}
 
 export default App
