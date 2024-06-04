@@ -63,7 +63,9 @@ import ReactDOM from "react-dom/client"
 // import App from "./03_useState的使用/App"
 // import App from "./04_useEffect的使用/01_修改标题_class实现"
 // import App from "./04_useEffect的使用/02_修改标题_hook实现"
-import App from "./04_useEffect的使用/03_Effect清除机制_返回回调函数"
+// import App from "./04_useEffect的使用/03_Effect清除机制_返回回调函数"
+// import App from "./04_useEffect的使用/04_逻辑分离_多个Effect的使用"
+import App from "./04_useEffect的使用/05_执行时机_控制Effect回调执行"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
