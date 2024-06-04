@@ -27,7 +27,6 @@ const App = memo(() => {
 
   //  告知React，在执行完当前组件渲染之后要执行的副作用代码
   useEffect(() => {
-    console.log("componentDidMount")
     let timerId = setInterval(() => {
       //  每次setCounter之后，App组件会被重新渲染
       //  在重新渲染之前，会执行清理（cleanup）函数
@@ -37,7 +36,6 @@ const App = memo(() => {
     //  返回值是一个回调函数，组件被重新渲染或者组件被卸载的时候执行
     //  这个回调函数被称为清理（cleanup）函数
     return () => {
-      console.log("componentWillUnmount")
       clearInterval(timerId)
       timerId = undefined
     }
