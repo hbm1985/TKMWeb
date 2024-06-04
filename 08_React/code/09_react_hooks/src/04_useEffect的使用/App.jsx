@@ -71,7 +71,6 @@ const App = memo(() => {
     <div>
       <h2>App</h2>
       {/* <CounterClass /> */}
-      <hr />
       <CounterFunc />
     </div>
   )
