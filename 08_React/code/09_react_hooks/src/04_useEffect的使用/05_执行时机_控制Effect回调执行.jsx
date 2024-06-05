@@ -11,7 +11,7 @@
     参数二：该useEffect在哪些state发生变化时，才重新执行（受谁的影响）
 
   但是，如果一个函数我们不希望依赖任何的内容时，也可以传入一个空的数组：[]
-    那么这里的两个回调函数分别对应的就是componentDidMount和ucomponentWillUnmount
+    那么这里的两个回调函数分别对应的就是componentDidMount和componentWillUnmount
  */
 
 import React, { PureComponent, memo, useEffect, useState } from "react"
@@ -24,7 +24,7 @@ const App = memo(() => {
   //  告知React，在执行完当前组件渲染之后要执行的副作用代码
   //  思考一下：网络请求、开启定时器、开启event-bus监听，往往只需要执行一次即可
   //  useEffect的第二个参数决定了依赖哪些数据才执行回调函数
-  //  通过useEffect可以模拟出之前的类组件的生命周期，但是它比原来的证明周期更强大
+  //  通过useEffect可以模拟出之前的类组件的生命周期，但是它比原来的生命周期更强大
   useEffect(() => {
     console.log("开启定时器")
     let timerId = setInterval(() => {
@@ -32,6 +32,8 @@ const App = memo(() => {
       // setCounter(counter + 1)
 
       //  setCounter的另一种写法
+      //  这种写法可以避免”闭包的陷阱“问题
+      //  实际开发中，使用了React Hooks，应该尽量写纯函数
       setCounter(prevCounter => prevCounter + 1)
     }, 1000)
     return () => {
