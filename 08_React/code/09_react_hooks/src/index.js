@@ -69,7 +69,9 @@ import ReactDOM from "react-dom/client"
 // import App from "./05_useContext的使用/App"
 // import App from "./06_useReducer的使用/App"
 // import App from "./07_useCallback的使用/App"
-import App from "./08_useMemo的使用/App"
+// import App from "./08_useMemo的使用/App"
+// import App from "./09_useRef的使用/01_useRef绑定DOM"
+import App from "./09_useRef的使用/02_useRef解决“闭包陷阱”问题"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
