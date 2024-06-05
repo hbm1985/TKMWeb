@@ -5,7 +5,13 @@
 
   如何进行性能的优化呢？
     useCallback会返回一个函数的memoized（记忆的）值
-    在依赖不变的情况下，多次定义的时候，返回的值时相同的
+    在依赖不变的情况下，多次定义的时候，返回的值是相同的
+
+  案例：
+    1.使用useCallback和不使用useCallback定义一个函数，对组件本身是否会带来性能的优化（不会）
+    2.使用useCallback和不使用useCallback定义一个函数，传递给组组件，是否会带来性能的优化（会的）
+
+  通常使用useCallback的目的是不希望子组件进行多次渲染，并不是为了函数进行缓存
  */
 
 import React, { memo, useState, useCallback, useRef } from "react"
