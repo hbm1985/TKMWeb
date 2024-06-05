@@ -32,7 +32,7 @@ const App = memo(() => {
       // setCounter(counter + 1)
 
       //  setCounter的另一种写法
-      // setCounter(prevCounter => prevCounter + 1)
+      setCounter(prevCounter => prevCounter + 1)
     }, 1000)
     return () => {
       console.log("取消定时器")
