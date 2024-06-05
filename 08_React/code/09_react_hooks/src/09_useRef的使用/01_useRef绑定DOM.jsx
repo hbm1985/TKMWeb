@@ -6,6 +6,10 @@
   最常用的ref的两种用法：
     用法一：引入DOM（或者组件，但是需要是class组件）元素
     用法二：保存一个数据，这个对象在整个生命周期中可以保持不变（解决“闭包陷阱”问题）
+
+  案例：
+    案例一：引用DOM
+    案例二：使用ref保存上一次的某一个值
  */
 
 import React, { PureComponent, memo, useRef } from "react"
