@@ -28,7 +28,9 @@ const App = memo(() => {
   useEffect(() => {
     console.log("开启定时器")
     let timerId = setInterval(() => {
+      // console.log("setInterval callback:", counter)
       // setCounter(counter + 1)
+
       //  setCounter的另一种写法
       // setCounter(prevCounter => prevCounter + 1)
     }, 1000)
