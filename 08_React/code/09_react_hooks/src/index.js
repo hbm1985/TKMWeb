@@ -72,7 +72,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./08_useMemo的使用/App"
 // import App from "./09_useRef的使用/01_useRef绑定DOM"
 // import App from "./09_useRef的使用/02_useRef解决“闭包陷阱”问题"
-import App from "./10_useImperativeHandle的使用/App"
+// import App from "./10_useImperativeHandle的使用/App"
+import App from "./11_useLayoutEffect的使用/01_useLayoutEffect和useEffect的执行时机"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
