@@ -1,0 +1,12 @@
+.app {
+  width: 2000px;
+  height: 2000px;
+}
+
+.scroll-position {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: black;
+  color: aqua;
+}
