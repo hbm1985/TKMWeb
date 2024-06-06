@@ -10,7 +10,8 @@
 
 import React, { memo, useEffect, useState } from "react"
 
-//  封装自定义Hook
+//  封装自定义Hook：自定义Hook内部可能会用到其他Hooks，则该自定义Hook必须以use开头
+//  React Hooks必须在函数组件或其他Hooks中使用
 //  如果不用自定义Hook，也可以自行封装高阶组件
 function useLogLifeCycle(cName) {
   useEffect(() => {

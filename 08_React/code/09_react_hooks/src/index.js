@@ -76,7 +76,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./11_useLayoutEffect的使用/01_useLayoutEffect和useEffect的执行时机"
 // // import App from "./11_useLayoutEffect的使用/02_修正数字_useEffect实现"
 // import App from "./11_useLayoutEffect的使用/03_修正数字_useLayoutEffect实现"
-import App from "./12_自定义hooks/App"
+// import App from "./12_自定义hooks/01_打印生命周期"
+import App from "./12_自定义hooks/02_获取Context数据"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
