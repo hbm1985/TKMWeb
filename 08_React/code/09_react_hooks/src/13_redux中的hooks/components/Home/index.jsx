@@ -4,6 +4,8 @@ import { increment, decrement } from "../../store/modules/counter"
 
 const Home = memo((props) => {
  
+  console.log("Home render")
+
   const { count, increment, decrement } = props
 
   return (
