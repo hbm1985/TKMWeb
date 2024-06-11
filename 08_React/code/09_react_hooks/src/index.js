@@ -79,7 +79,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./12_自定义hooks/01_打印生命周期"
 // import App from "./12_自定义hooks/02_获取Context数据"
 // import App from "./12_自定义hooks/03_获取滚动位置"
-import App from "./12_自定义hooks/04_存储数据"
+// import App from "./12_自定义hooks/04_存储数据"
+import App from "./13_redux中的hooks/App"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
