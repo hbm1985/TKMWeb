@@ -82,7 +82,8 @@ import ReactDOM from "react-dom/client"
 // import App from "./12_自定义hooks/04_存储数据"
 // import App from "./13_redux中的hooks/App"
 // import App from "./14_useId的使用/App"
-import App from "./15_useTransition的使用/App"
+// import App from "./15_useTransition的使用/01_useTransition的使用"
+import App from "./15_useTransition的使用/02_useDeferredValue的使用"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
