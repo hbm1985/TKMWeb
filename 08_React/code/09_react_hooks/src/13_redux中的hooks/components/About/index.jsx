@@ -14,6 +14,7 @@ const About = memo(() => {
   //  简单的写法
   // const count = useSelector(state => state.counter.count)
 
+  //  使用dispatch直接派发action
   const dispatch = useDispatch()
 
   return (
