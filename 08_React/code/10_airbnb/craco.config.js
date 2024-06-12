@@ -11,7 +11,8 @@ module.exports = {
       "@views": pathResolve("src/views"),
       "@utils": pathResolve("src/utils"),
       "@css": pathResolve("src/assets/css"),
-      "@img": pathResolve("src/assets/img")
+      "@img": pathResolve("src/assets/img"),
+      "store": pathResolve("src/store"),
     }
   },
   plugins: [

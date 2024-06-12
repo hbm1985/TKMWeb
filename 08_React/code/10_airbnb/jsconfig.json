@@ -22,6 +22,9 @@
       ],
       "@img": [
         "src/assets/img"
+      ],
+      "@store": [
+        "src/store"
       ]
     },
     "jsx": "preserve",
