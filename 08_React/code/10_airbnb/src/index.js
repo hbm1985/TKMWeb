@@ -6,7 +6,7 @@ import { HashRouter } from "react-router-dom"
 import "normalize.css"
 import "@css/index.less"
 import App from "./App"
-import store from "./store"
+import store from "@store"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
