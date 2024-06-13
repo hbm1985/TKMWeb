@@ -12,6 +12,7 @@ module.exports = {
       "@utils": pathResolve("src/utils"),
       "@css": pathResolve("src/assets/css"),
       "@img": pathResolve("src/assets/img"),
+      "@svg": pathResolve("src/assets/svg"),
       "@store": pathResolve("src/store"),
       "@services": pathResolve("src/services")
     }

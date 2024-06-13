@@ -23,6 +23,9 @@
       "@img": [
         "src/assets/img"
       ],
+      "@svg": [
+        "src/assets/svg"
+      ],
       "@store": [
         "src/store"
       ],
